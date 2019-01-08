@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>flybirdmc</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-01-08T05:56:23.583Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>mc</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的第一篇文章</title>
+    <link href="http://yoursite.com/2019/01/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+    <id>http://yoursite.com/2019/01/08/我的第一篇文章/</id>
+    <published>2019-01-08T05:53:20.000Z</published>
+    <updated>2019-01-08T05:56:23.583Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是我的第一篇文章，终于把域名和github page连好了，昨天按教程弄了一遍，但是一直无法访问，所以今天推倒重新来了一遍。<br>很早之前就想用hexo来弄一个博客，但是当时直接在命令行安装hexo上卡死了，可能是因为网络原因。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是我的第一篇文章，终于把域名和github page连好了，昨天按教程弄了一遍，但是一直无法访问，所以今天推倒重新来了一遍。&lt;br&gt;很早之前就想用hexo来弄一个博客，但是当时直接在命令行安装hexo上卡死了，可能是因为网络原因。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/01/08/hello-world/"/>
+    <id>http://yoursite.com/2019/01/08/hello-world/</id>
+    <published>2019-01-08T05:25:16.699Z</published>
+    <updated>2019-01-08T05:56:36.540Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to flybirdmc.top</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to flybirdmc.top&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
