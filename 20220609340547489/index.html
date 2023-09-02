@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zzflybird">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="https:&#x2F;&#x2F;learngitbranching.js.org  基础篇提交以当前的快照为基础，创建一个新的快照 git commit 分支创建分支，就是创建一个指针 newImage，指向当前的快照 git branch ‘newImage’ 切换分支git checkout ‘分支名字’切换分支并提交git checkout ‘newImage’; git commt 合并分支 git m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令记录">
+<meta property="og:url" content="https://zzflybird.github.io/blog/20220609340547489/index.html">
+<meta property="og:site_name" content="zzflybird">
+<meta property="og:description" content="https:&#x2F;&#x2F;learngitbranching.js.org  基础篇提交以当前的快照为基础，创建一个新的快照 git commit 分支创建分支，就是创建一个指针 newImage，指向当前的快照 git branch ‘newImage’ 切换分支git checkout ‘分支名字’切换分支并提交git checkout ‘newImage’; git commt 合并分支 git m">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-09T02:15:26.000Z">
+<meta property="article:modified_time" content="2022-08-06T14:43:18.242Z">
+<meta property="article:author" content="zzflybird">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Git常用命令记录 - zzflybird</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/blog/css/test.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zzflybird.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/blog/atom.xml" title="zzflybird" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>zzflybird&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Git常用命令记录">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-06-09 10:15" pubdate>
+        2022年6月9日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Git常用命令记录</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年8月6日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/">https://learngitbranching.js.org</a></p>
+</blockquote>
+<h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><p>以当前的快照为基础，创建一个新的快照</p>
+<p>git commit</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>创建分支，就是创建一个指针 newImage，指向当前的快照</p>
+<p>git branch ‘newImage’</p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>git checkout ‘分支名字’<br>切换分支并提交<br>git checkout ‘newImage’; git commt</p>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><ol>
+<li>git merge<br>当前在 main 分支，还有一个 bugFix 分支，使用 <code>git merge bugFix</code> 把 bugFix 合并到 main 里</li>
+</ol>
+<p>切换到 bugFix 分支， 把 main 分支合并到 bugFix 分支：<br><code>git checkout bugFix; git merge main</code></p>
+<ol start="2">
+<li>git rebase<br>Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。<br>将 bugFix 分支的内容移动到 main 分支后面，<br>先切换到 bugFix 分支，然后 <code>git rebase main</code>；</li>
+</ol>
+<h3 id="分离HEAD"><a href="#分离HEAD" class="headerlink" title="分离HEAD"></a>分离HEAD</h3><p>在提交树上移动<br>git checkout c4</p>
+<h3 id="相对引用-改变HEAD的指向"><a href="#相对引用-改变HEAD的指向" class="headerlink" title="相对引用:改变HEAD的指向"></a>相对引用:改变HEAD的指向</h3><ol>
+<li>使用 <code>^</code> 向上移动一个提交记录；</li>
+<li>使用 <code>~&lt;num&gt;</code> 向上移动多个提交记录，例如：<code>~3</code></li>
+</ol>
+<p><code>main^</code>相当于 找 main 的父节点：<code>git checkout main^</code><br><code>git checkout HEAD^</code></p>
+<p>“~”操作符<br>如果你想在提交树中向上移动很多步的话，敲那么多 ^ 貌似也挺烦人的，Git 当然也考虑到了这一点，于是又引入了操作符 ~。<br>该操作符后面可以跟一个数字（可选，不跟数字时与 ^ 相同，向上移动一次），指定向上移动多少次。咱们还是通过实际操作看一下吧</p>
+<p>git checkout HEAD~4:后退4步</p>
+<h3 id="强制修改分支位置"><a href="#强制修改分支位置" class="headerlink" title="强制修改分支位置"></a>强制修改分支位置</h3><p>我使用相对引用最多的就是移动分支。可以直接使用 -f 选项让分支指向另一个提交。例如:<br>git branch -f main HEAD~3</p>
+<p>上面的命令会将 main 分支强制指向 HEAD 的第 3 级父提交。</p>
+<p><code>git branch -f main HEAD~3</code> 命令可以让 mian 去指定的位置</p>
+<h3 id="撤销变更"><a href="#撤销变更" class="headerlink" title="撤销变更"></a>撤销变更</h3><p>一是 git reset，还有就是 git revert。</p>
+<p>本地使用 git reset HEAD~1:回退1个</p>
+<p>为了撤销更改并分享给别人，我们需要使用 git revert。<br>revert 会创建一个新的提交，这个新的提交和上上个提交是一样的。<br>git revert HEAD<br>revert 后，可以把更改推送到远程仓库了。</p>
+<h1 id="整理提交记录"><a href="#整理提交记录" class="headerlink" title="整理提交记录"></a>整理提交记录</h1><p>到现在我们已经学习了 Git 的基础知识 —— 提交、分支以及在提交树上移动。 这些概念涵盖了 Git 90% 的功能，同样也足够满足开发者的日常需求</p>
+<p>然而, 剩余的 10% 在处理复杂的工作流时(或者当你陷入困惑时）可能就显得尤为重要了。接下来要讨论的这个话题是“整理提交记录” —— 开发人员有时会说“我想要把这个提交放到这里, 那个提交放到刚才那个提交的后面”, 而接下来就讲的就是它的实现方式，非常清晰、灵活，还很生动。</p>
+<h2 id="Git-Cherry-pick"><a href="#Git-Cherry-pick" class="headerlink" title="Git Cherry-pick"></a>Git Cherry-pick</h2><p>本系列的第一个命令是 git cherry-pick, 命令形式为:</p>
+<p><code>git cherry-pick &lt;提交号&gt;...</code><br>如果你想将一些提交复制到当前所在的位置（HEAD）下面的话，<br>Cherry-pick 是最直接的方式了。我个人非常喜欢 cherry-pick，因为它特别简单。</p>
+<p>当前在 main 分支，执行 <code>git cherry-pick c2 c4</code>,  将 side 分支的 c2和c4复制到当前 main 分支下面；</p>
+<h2 id="交互式的-rebase"><a href="#交互式的-rebase" class="headerlink" title="交互式的 rebase"></a>交互式的 rebase</h2><p><strong>当你知道你所需要的提交记录（并且还知道这些提交记录的哈希值）时</strong>,<br>用 cherry-pick 再好不过了 —— 没有比这更简单的方式了。</p>
+<p>但是<strong>如果你不清楚你想要的提交记录的哈希值呢?</strong> 幸好 Git 帮你想到了这一点,<br>我们可以利用交互式的 rebase —— 如果你想从一系列的提交记录中找到想要的记录,<br>这就是最好的方法了</p>
+<p>交互式 rebase 指的是使用带参数 –interactive 的 rebase 命令, 简写为 -i</p>
+<p>如果你在命令后增加了这个选项, Git 会打开一个 UI 界面并列出将要被复制到目标分支的备选提交记录，<br>它还会显示每个提交记录的哈希值和提交说明，提交说明有助于你理解这个提交进行了哪些更改。</p>
+<p>在实际使用时，所谓的 UI 窗口一般会在文本编辑器 —— 如 Vim —— 中打开一个文件。<br> 考虑到课程的初衷，我弄了一个对话框来模拟这些操作。</p>
+<p><code>git rebase -i HEAD~4</code><br>可以选择复制的节点快照</p>
+<p>在 main 分支，执行 <code>git rebase -i HEAD~4</code>, 选择要复制的节点快照和顺序;</p>
+<hr>
+<h1 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h1><h4 id="新建远程仓库"><a href="#新建远程仓库" class="headerlink" title="新建远程仓库"></a>新建远程仓库</h4><h4 id="新建本地仓库，git-test"><a href="#新建本地仓库，git-test" class="headerlink" title="新建本地仓库，git-test"></a>新建本地仓库，git-test</h4><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> git-test<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="关联远程库"><a href="#关联远程库" class="headerlink" title="关联远程库"></a>关联远程库</h4><p><code># git remote add origin(默认origin，可修改) branch_Name(为空时默认为master) url</code></p>
+<p>两个地方的仓库名不需要相同，因为通过在本地仓库目录下执行这条命令（命令中包含远程库的名字）已经将两者建立了联系</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin git@github.xxx/xxx.git<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="创建文件，修改文件"><a href="#创建文件，修改文件" class="headerlink" title="创建文件，修改文件"></a>创建文件，修改文件</h4><h4 id="添加所有文件到本地库"><a href="#添加所有文件到本地库" class="headerlink" title="添加所有文件到本地库"></a>添加所有文件到本地库</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-built_in">add</span> *<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="提交文件到本地库"><a href="#提交文件到本地库" class="headerlink" title="提交文件到本地库"></a>提交文件到本地库</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;提交日志&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="将本地库的所有内容推送到远程库上"><a href="#将本地库的所有内容推送到远程库上" class="headerlink" title="将本地库的所有内容推送到远程库上"></a>将本地库的所有内容推送到远程库上</h4><p>加上了-u参数(推送和关联)，Git不但会把本地的master分支内容推送到远程新的master分支，</p>
+<p>还会把本地的master分支和远程的master分支关联起来</p>
+<p>以后即可直接用git push代替git push origin master</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> -u <span class="hljs-built_in">origin</span> master<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p>来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/87732909">https://zhuanlan.zhihu.com/p/87732909</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202206132043560161/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">kafka笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202206052864324003/">
+                        <span class="hidden-mobile">数据库笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","appKey":"TSk3z5eAUFeKIIBzqogbMW4e","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">载入网站运行时间...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zzflybird">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Spring源码1-3 SpringMVC源码4 第1节Spring概念和使用注解方式管理Bean： 1、注解方式 创建对象IOC 导入依赖 aop 123456@Component    放在类上,用于标记,告诉spring当前类需要由容器实例化bean并放入容器中该注解有三个子注解@Controller   用于实例化controller层bean@Service        用于实例化se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring笔记">
+<meta property="og:url" content="https://zzflybird.github.io/blog/202205202545824373/index.html">
+<meta property="og:site_name" content="zzflybird">
+<meta property="og:description" content="Spring源码1-3 SpringMVC源码4 第1节Spring概念和使用注解方式管理Bean： 1、注解方式 创建对象IOC 导入依赖 aop 123456@Component    放在类上,用于标记,告诉spring当前类需要由容器实例化bean并放入容器中该注解有三个子注解@Controller   用于实例化controller层bean@Service        用于实例化se">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png">
+<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215633666.png">
+<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215812470.png">
+<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220527224307025.png">
+<meta property="article:published_time" content="2022-05-20T12:39:39.000Z">
+<meta property="article:modified_time" content="2022-06-11T05:31:56.000Z">
+<meta property="article:author" content="zzflybird">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png">
+  
+  
+  <title>Spring笔记 - zzflybird</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/blog/css/test.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zzflybird.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/blog/atom.xml" title="zzflybird" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>zzflybird&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Spring笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-20 20:39" pubdate>
+        2022年5月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      12k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      99 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年6月11日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>Spring源码1-3</p>
+<p>SpringMVC源码4</p>
+<h1 id="第1节"><a href="#第1节" class="headerlink" title="第1节"></a>第1节</h1><h2 id="Spring概念和使用"><a href="#Spring概念和使用" class="headerlink" title="Spring概念和使用"></a>Spring概念和使用</h2><p>注解方式管理Bean：</p>
+<p><strong>1、注解方式 创建对象IOC</strong></p>
+<p>导入依赖 aop</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span>    放在类上,用于标记,告诉spring当前类需要由容器实例化bean并放入容器中<br>该注解有三个子注解<br><span class="hljs-meta">@Controller</span>   用于实例化controller层bean<br><span class="hljs-meta">@Service</span>        用于实例化service层bean<br><span class="hljs-meta">@Repository</span>  用于实例化持久层bean<br>当不确定是哪一层,就用Component<br></code></pre></td></tr></table></figure>
+
+<p>这几个注解互相混用其实也可以,但是不推荐</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 第一步:在applicationContext.xml中配置开启注解扫描</span><br>    &lt;!--添加注解扫描,扫描指定的包,将包中的所有有注解的类实例化<br>    base-<span class="hljs-keyword">package</span> 后面放要扫描的包<br>    如果有多个包需要扫描,可以使用逗号隔开  com.msb.bean,com.msb.service<br>    或者可以写上一层包路径  com.msb<br>    可以通过注解指定bean的id <span class="hljs-meta">@Component(&quot;user1&quot;)</span><br>    如果不指定,则id默认是 类名首字母小写<br>    --&gt;<br>&lt;context:component-scan base-<span class="hljs-keyword">package</span>=<span class="hljs-string">&quot;com.zzflybird.bean&quot;</span>&gt;&lt;/context:component-scan&gt;<br><br><span class="hljs-comment">// 第二步:在类上添加注解,让spring容器给我们创建bean实例并存储于容器中</span><br><span class="hljs-meta">@Component(value = &quot;user1&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br><br>&#125;<br><br><span class="hljs-comment">// 单元测试</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">userTest</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">ClassPathXmlApplicationContext</span> <span class="hljs-variable">context</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ClassPathXmlApplicationContext</span>(<span class="hljs-string">&quot;spring.xml&quot;</span>);<br>    <span class="hljs-type">Object</span> <span class="hljs-variable">user1</span> <span class="hljs-operator">=</span> context.getBean(<span class="hljs-string">&quot;user1&quot;</span>);<br>    System.out.println(user1);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>2、注解方式 依赖注入DI</strong></p>
+<p>@Autowired   根据属性数据类型自动装配<br>@Qualifier      根据属性名称注入依赖<br>@Resources   可以根据类型,也可以根据名称注入<br>@Value           注入普通数据类型(8+String)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">* @Autowired</span><br><span class="hljs-comment">* 根据类型到容器中去寻找对应的对象,找到后给当前属性赋值</span><br><span class="hljs-comment">* 不需要依赖 set方法</span><br><span class="hljs-comment">* 属性类型可以是接口,会自动匹配对应的实现类对象</span><br><span class="hljs-comment">* @Autowired配合 @Qualifier,可以通过名称指定注入的对象</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">* @Resource 如果不配置name 那么就是根据类型注入</span><br><span class="hljs-comment">* @Resource(name=&quot;userDaoImplB&quot;) 配置name,就是根据名称注入</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">* @Resource  是JDK中javax包的注解</span><br><span class="hljs-comment">* @Autowired 和 @Qualifier 是spring中的注解</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">* @Value 可以个普通属性赋值</span><br><span class="hljs-comment">* @Value 可以使用$&#123;&#125;这种表达式获取系统的变量值</span><br><span class="hljs-comment">*        或者是.properties属性配置文件中的值</span><br><span class="hljs-comment">*</span><br><span class="hljs-comment">* */</span><br><span class="hljs-comment">//@Autowired</span><br><span class="hljs-comment">//@Qualifier(&quot;userDaoImplA&quot;)</span><br><span class="hljs-comment">//@Qualifier(&quot;userDaoImplB&quot;)</span><br><span class="hljs-comment">//private UserDao userDao ;</span><br><span class="hljs-meta">@Resource(name=&quot;userDaoImplB&quot;)</span><br><span class="hljs-keyword">private</span> UserDao userDao ;<br><span class="hljs-meta">@Value(&quot;$&#123;username&#125;&quot;)</span><br><span class="hljs-keyword">private</span> String sname;<br><span class="hljs-meta">@Value(&quot;boy&quot;)</span><br><span class="hljs-keyword">private</span> String sgender;<br><span class="hljs-meta">@Value(&quot;$&#123;age&#125;&quot;)</span><br><span class="hljs-keyword">private</span> Integer sage;<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>3、完全使用注解</strong></p>
+<p><strong>创建配置类</strong>，替代xml配置文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ComponentScan(basePackages = &quot;com.zzflybird&quot;)</span> <span class="hljs-comment">// 配置扫描包</span><br><span class="hljs-meta">@PropertySource(&quot;classpath:aaa.properties&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SpringConfig</span> &#123;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SpringConfigTest</span> &#123;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">springConfigTest</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">AnnotationConfigApplicationContext</span> <span class="hljs-variable">context</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AnnotationConfigApplicationContext</span>(SpringConfig.class);<br>        <span class="hljs-type">UserServiceImpl</span> <span class="hljs-variable">userServiceImpl</span> <span class="hljs-operator">=</span> context.getBean(<span class="hljs-string">&quot;userServiceImpl&quot;</span>, UserServiceImpl.class);<br>        userServiceImpl.add();<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>JDK Proxy动态代理：面向接口</strong></p>
+<ul>
+<li>必须有接口和实现类 </li>
+<li>只能增强接口中定义的方法</li>
+<li>只能读取接口中方法的上注解</li>
+</ul>
+<blockquote>
+<ol>
+<li>在不修改原有代码的 或者没有办法修改原有代码的情况下  增强对象功能  使用代理对象 代替原来的对象去完成功能<br>进而达到拓展功能的目的</li>
+<li>JDK Proxy 动态代理面向接口的动态代理  一定要有接口和实现类的存在 代理对象增强的是实现类 在实现接口的方法重写的方法</li>
+</ol>
+<ul>
+<li>生成的代理对象只能转换成 接口的不能转换成 被代理类</li>
+<li>代理对象只能增强接口中定义的方法  实现类中其他和接口无关的方法是无法增强的</li>
+<li>代理对象只能读取到接口中方法上的注解 不能读取到实现类方法上的注解</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-comment">// Proxy  动态代理 JDK动态代理         面向接口</span><br><span class="hljs-comment">// 接口</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Dinner</span>&#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">eat</span><span class="hljs-params">(String foodName)</span>;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">drink</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// 被代理类，实现接口</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Dinner</span>&#123;<br><br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">eat</span><span class="hljs-params">(String foodName)</span> &#123;<br>        System.out.println(name+<span class="hljs-string">&quot;:吃&quot;</span>+foodName);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">drink</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(name + <span class="hljs-string">&quot;:喝&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PorxyTest</span> &#123;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">proxyTest</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-type">Dinner</span> <span class="hljs-variable">dinner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">&quot;张三&quot;</span>);<br><br>        <span class="hljs-comment">//被代理的对象的类加载器</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">loader</span> <span class="hljs-operator">=</span> dinner.getClass().getClassLoader();<br>        <span class="hljs-comment">//被代理对象所实现的所有接口</span><br>        Class&lt;?&gt;[] interfaces = dinner.getClass().getInterfaces();<br><br>        <span class="hljs-comment">//执行处理器对象,专门用于定义增强的规则</span><br>        <span class="hljs-type">InvocationHandler</span> <span class="hljs-variable">invocationHandler</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvocationHandler</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">invoke</span><span class="hljs-params">(Object proxy, // 代理对象</span><br><span class="hljs-params">                                 Method method, // 被代理的方法</span><br><span class="hljs-params">                                 Object[] args)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>                <span class="hljs-type">Object</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>                <span class="hljs-keyword">if</span> (method.getName().equals(<span class="hljs-string">&quot;eat&quot;</span>))<br>                &#123;<br>                    System.out.println(<span class="hljs-string">&quot;在被代理方法 eat() 前 do something&quot;</span>);<br>                    <span class="hljs-comment">// 调用被代理对象的方法</span><br>                    res = method.invoke(dinner, args);<br>                &#125; <span class="hljs-keyword">else</span><br>                &#123;<br>                    res = method.invoke(dinner, args);<br>                &#125;<br>                <span class="hljs-keyword">return</span> res;<br>            &#125;<br>        &#125;;<br><br>        <span class="hljs-comment">//通过Porxy动态代理获得一个代理对象,在代理对象中,对某个方法进行增强</span><br>        <span class="hljs-comment">// 代理对象只能转换成接口，不能转换成 被代理类</span><br>        <span class="hljs-type">Dinner</span> <span class="hljs-variable">dinnerProxy</span> <span class="hljs-operator">=</span> (Dinner) Proxy.newProxyInstance(loader, interfaces, invocationHandler);<br>        dinnerProxy.drink();<br>        dinnerProxy.eat(<span class="hljs-string">&quot;冒菜&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>CGLIB动态代理： 面向父类</strong></p>
+<ol>
+<li>面向父类，和接口没有直接关系</li>
+<li>不仅可增强接口中定义的方法，还可以增强一个类其他的方法</li>
+<li>可以读取父类中方法上的所有注解</li>
+</ol>
+<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png" srcset="/blog/img/loading.gif" lazyload alt="image-20220521160949458"></p>
+<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p><strong>AOP切面编程一般可以帮助我们在不修改现有代码的情况下,对程序的功能进行拓展,往往用于实现 日志处理,权限控制,性能检测,事务控制等<br>AOP实现的原理就是动态代理，在有接口的情况下,使用JDK动态代理,在没有接口的情况下使用cglib动态代理</strong></p>
+<p><strong>AOP中的术语辨析</strong></p>
+<p>1 连接点 Joint point:<br>类里面那些可以被增强的方法,这些方法称之为连接点<br>表示在程序中明确定义的点，典型的包括方法调用，对类成员的访问以及异常处理程序块的执行等等，它自身还可以嵌套其它 joint point</p>
+<p>2 <strong>切入点 Pointcut:</strong><br><strong>实际被增强的方法,称之为切入点</strong>，”execution(* com.zzflybird.dao.<em>.add</em>(..))”<br>表示一组 joint point，这些 joint point 或是通过逻辑关系组合起来，或是通过通配、正则表达式等方式集中起来，它定义了相应的 Advice 将要发生的地方</p>
+<p>3 通知 Advice:<br>实际增强的逻辑部分称为通知 (增加的功能)<br>Advice 定义了在 Pointcut 里面定义的程序点具体要做的操作，它通过 before、after 和 around 来区别是在每个 joint point 之前、之后还是代替执行的代码。<br>通知类型: 1 前置通知 2 后置通知 3 环绕通知 4 异常通知 5 最终通知</p>
+<p>4 目标对象 Target：被增强功能的对象(被代理的对象)<br>织入 Advice 的目标对象</p>
+<p>5 切面Aspect： 表现为功能相关的一些advice方法放在一起声明成的一个Java类<br>Aspect 声明类似于 Java 中的类声明，在 Aspect 中会包含着一些 Pointcut 以及相应的 Advice。</p>
+<p>6 织入 Weaving：<br>创建代理对象并实现功能增强的声明并运行过程<br>将 Aspect 和其他对象连接起来, 并创建 Adviced object 的过程</p>
+<p><strong>AOP的实现：基于注解（熟练）</strong></p>
+<h2 id="Spring原理笔记"><a href="#Spring原理笔记" class="headerlink" title="Spring原理笔记"></a>Spring原理笔记</h2><h3 id="Spring-Bean的创建生命周期："><a href="#Spring-Bean的创建生命周期：" class="headerlink" title="Spring Bean的创建生命周期："></a><strong>Spring Bean的创建生命周期</strong>：</h3><p>根据一个类最终得到一个Bean对象，中间经过的步骤。</p>
+<p>UserService.class—&gt;无参构造方法（推断构造方法）—》普通对象—》依赖注入（属性赋值）—》初始化前（@PostConstruct）—–》初始化（InitializingBean）—》初始化后（AOP）—》代理对象—-》Bean</p>
+<p>推断构造方法：使用哪个构造方法，构造方法的参数去哪里拿</p>
+<p>Bean的销毁的生命周期</p>
+<p>推断构造方法：</p>
+<p>如果一个类中只有一个有参构造方法，spring就用这个。</p>
+<p>如果一个类中有多个有参构造方法，spring不知道用哪一个，就会去找无参构造方法，如果找不到无参构造方法，就会报错。</p>
+<p>有参构造方法的参数是一个类A的对象a，spring会先从spring容器中通过类名A找对应类型的Bean，如果找到了1个bean，就用这个bean给构造方法；如果使用类名A找到多个bean，就再用参数名a找与其名称相同的bean，把名称相同的bean给构造方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserDaoImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">UserDao</span> &#123;<br><br>    <span class="hljs-keyword">private</span> EmpDao empDao;<br><br><span class="hljs-comment">//    public UserDaoImpl() &#123;</span><br><span class="hljs-comment">//    &#125;</span><br><br><span class="hljs-comment">//    @Autowired</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">UserDaoImpl</span><span class="hljs-params">(EmpDao empDao)</span> &#123;<br>        <span class="hljs-built_in">this</span>.empDao = empDao;<br>    &#125;<br><br>    <span class="hljs-meta">@Autowired</span> <span class="hljs-comment">// 没有默认构造方法，对于两个有参构造方法，想让spring用哪一个，就加上@Autowired注解</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">UserDaoImpl</span><span class="hljs-params">(EmpDao empDao, EmpDao empDao1)</span> &#123;<br>        <span class="hljs-built_in">this</span>.empDao = empDao;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="AOP原理"><a href="#AOP原理" class="headerlink" title="AOP原理"></a>AOP原理</h3><p>UserService等价于UserDao，OrderService等价于EmpDao</p>
+<p>Spring生成Bean的过程：UserService.class—&gt;无参构造方法（推断构造方法）—》<strong>普通对象</strong>—》<strong>依赖注入（属性赋值）</strong>—》初始化前（@PostConstruct）—–》初始化（InitializingBean）—》初始化后（AOP）—》代理对象—-》Bean</p>
+<p>UserServiceProxy类—-&gt;代理对象—-&gt;代理对象.target &#x3D;  <strong>普通对象</strong></p>
+<p>代理对象.test()方法—&gt;进入到代理类的test方法中，执行target.test()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserServiceProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UserService</span><br>&#123;<br>    UserService target;<span class="hljs-comment">// 普通对象，进行过依赖注入的，其属性是有值的</span><br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-comment">// 先执行@Before修饰的方法，执行切面逻辑</span><br>        target.test();<span class="hljs-comment">// 普通对象.test()</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>而代理对象里面的orderService (empDao)对象是没有赋值的，是null的。</p>
+<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215633666.png" srcset="/blog/img/loading.gif" lazyload alt="image-20220521215633666"></p>
+<p>普通对象是进行了依赖注入的，它的属性是有值的。</p>
+<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215812470.png" srcset="/blog/img/loading.gif" lazyload alt="image-20220521215812470"></p>
+<p>Spring生成Bean的过程：UserService.class—&gt;无参构造方法（推断构造方法）—》<strong>普通对象</strong>—》<strong>依赖注入（属性赋值）</strong>—》初始化前（@PostConstruct）—–》初始化（InitializingBean）—》初始化后（AOP）—》代理对象—-》Bean</p>
+<p>在<strong>初始化后（AOP）</strong>这一步，判断UserService要不要进行AOP，根据UserService中的方法是否被切了来判断。那么如何判断UserService中的有没有方法被切了呢？</p>
+<p>1、找出所有的切面Bean</p>
+<p>2、遍历所有的切面Bean</p>
+<p>3、对于每一个切面Bean，遍历其所有方法</p>
+<p>4、如果 某切面Bean中方法beforeMethod()的<strong>注解表达式中的某个方法test()</strong> &#x3D;&#x3D; <strong>UserService中的某个方法test()<strong>，就把</strong>方法beforeMethod()<strong>放入map中缓存下来。存下来的方法</strong>beforeMethod()<strong>后面在</strong>test()方法</strong>前执行的时候直接去map中找方法来执行。map&lt;UserService.class, method list&gt;</p>
+<h3 id="Spring-事务原理"><a href="#Spring-事务原理" class="headerlink" title="Spring 事务原理"></a>Spring 事务原理</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 想要使用自动注解打开事务，结果发现没有注解，事务需要配置额外的包</span><br><br></code></pre></td></tr></table></figure>
+
+<p>2小时打卡，AOP原理，Spring中的Bean（代理对象）与普通对象的区别？</p>
+<p>Spring中的Bean就是一个代理对象。</p>
+<p>加不加注解@Configuration对事务的作用：</p>
+<p>两个不同的dataSource对象，一个是JdbcTemplate中自己的，另一个是Spring事务管理器创建的dataSource对象，创建连接conn，并关闭conn的自动提交。</p>
+<p>JdbcTemplate和Spring事务管理器中的dataSource要是同一个dataSource，事务才会有效。</p>
+<p>加了事务注解的方法中，调用该方法的对象是普通对象还是代理对象，如果是代理对象那么事务注解就有用。</p>
+<h1 id="第2节"><a href="#第2节" class="headerlink" title="第2节"></a>第2节</h1><h2 id="手写Spring"><a href="#手写Spring" class="headerlink" title="手写Spring"></a>手写Spring</h2><p>Spring生成Bean的过程：</p>
+<p>UserService.class—&gt;无参构造方法（推断构造方法）—》<strong>普通对象</strong>—》<strong>依赖注入（属性赋值）</strong>—》<strong>初始化前（@PostConstruct）</strong>—–》初始化（InitializingBean）—》<strong>初始化后（AOP）</strong>—》代理对象—-》Bean</p>
+<p>创建ConfigAppcontext类</p>
+<p>创建Config配置类</p>
+<p>创建@配置注解</p>
+<p>实现Appcontext的构造方法</p>
+<p>扫描方法</p>
+<p>实例化对象</p>
+<p>BeanDefination</p>
+<p>beanDefinationMap</p>
+<p>singletonObjectsMap</p>
+<p>实现依赖注入—-》</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 进行依赖注入, 得到Bean对象的类中的所有属性，判断是否有Autowired注解</span><br>Field[] declaredFields = clazz.getDeclaredFields();<br><span class="hljs-keyword">for</span> (Field field : declaredFields) &#123;<br>    System.out.println(field);<br><br>    <span class="hljs-keyword">if</span> (field.isAnnotationPresent(Autowired.class)) &#123;<br><br>        <span class="hljs-comment">// 在访问 属性 域时，Java进行了访问检查，发现该域是private修饰的，不能直接访问，因此抛出异常。</span><br>        <span class="hljs-comment">// 解决方法: 关闭安全检查, 使可以访问私有属性, 反射的对象在使用时应该取消 Java 语言访问检查</span><br>        field.setAccessible(<span class="hljs-literal">true</span>);<br><br>        <span class="hljs-comment">// 先根据类型去找Bean，如果找到多个Bean，在根据名字去找</span><br>        <span class="hljs-comment">//                    System.out.println(field.getType());</span><br><br>        <span class="hljs-comment">// 根据field.getName()名字去找Bean</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">fieldBean</span> <span class="hljs-operator">=</span> getBean(field.getName());<br>        <span class="hljs-comment">// 为 instance 对象的 field 属性，设置值 = getBean(field.getName())</span><br>        field.set(instance, fieldBean);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>进行初始化—-》UserService类 实现 InitializingBean接口来进行初始化，先自己定义InitializingBean接口，在UserService类中重写InitializingBean接口的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 底层源码实现：</span><br><span class="hljs-comment">// 在依赖注入后，进行初始化: 判断 instance 是否实现了 InitializingBean 接口</span><br><span class="hljs-keyword">if</span> (instance <span class="hljs-keyword">instanceof</span> InitializingBean)<br>&#123;<br>    ((InitializingBean) instance).afterPropertiesSet(); <span class="hljs-comment">// 调用初始化方法</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>BeanPostProcessor(最重要的东西)，用于实现 初始化前，初始化后</p>
+<p>实现 初始化前，初始化后 的功能——-》创建BeanPostProcessor接口，然后定义2个抽象方法：</p>
+<ol>
+<li><code>postProcessBeforeInitialization()</code> 初始化前</li>
+<li><code>postProcessAfterInitialization()</code> 初始化后</li>
+</ol>
+<p>用自己创建的ZzflybirdBeanPostProcessor类实现BeanPostProcessor接口，并标注注解，设置为Bean，使得spring可以扫描到。</p>
+<p>在spring扫描的过程中，将 实现了BeanPostProcessor接口的类 进行实例化，得到对象，并保存到beanPostProcessorList中。</p>
+<p>方便在后面createBean()中，</p>
+<p>在 【依赖注入】–》【初始化前】——–》【初始化】———–》【初始化后】中的初始化前和初始化后中调用beanPostProcessorList中的对象的两个重写的方法。</p>
+<p>每一个Bean都会调用postProcessBeforeInitialization()和postProcessAfterInitialization()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化前</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> bean 传入的 bean 实例， 可以对其进行操作</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> beanName 传入的beanName</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Object <span class="hljs-title function_">postProcessBeforeInitialization</span><span class="hljs-params">(Object bean, String beanName)</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;初始化前&quot;</span> + beanName);<br>    <span class="hljs-keyword">return</span> bean;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化后</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> bean 传入的 bean 实例， 可以对其进行操作</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> beanName 传入的beanName</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Object <span class="hljs-title function_">postProcessAfterInitialization</span><span class="hljs-params">(Object bean, String beanName)</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;初始化后&quot;</span> + beanName);<br>    <span class="hljs-keyword">return</span> bean;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Spring中AOP的底层就是通过BeanPostProcessor接口的两个方法实现的，因为这两个方法传入bean，然后可以在bean调用方法前，进行一些操作，这就是AOP。</p>
+<p>基于 BeanPostProcessor 这个机制，传入bean，再传出bean，可以对bean做很多事情。</p>
+<p>Aware回调功能：</p>
+<p>在bean中获取beanName；</p>
+<p>创建BeanNameAware接口，setBeanName()方法；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 用于 让一个bean 知道自己的名字，设置 beanName</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BeanNameAware</span> &#123;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">setBeanName</span><span class="hljs-params">(String beanName)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>让一个Bean类实现这个BeanNameAware接口，重写setBeanName方法，Spring底层会自动调用setBeanName方法，为属性赋值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> String beanName;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setBeanName</span><span class="hljs-params">(String beanName)</span> &#123;<br>    <span class="hljs-built_in">this</span>.beanName = beanName;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Aware回调功能是在【依赖注入】后，【初始化前】之前执行的。</p>
+<p>如何实现：</p>
+<ol>
+<li>判断bean对象是否实现了BeanNameAware接口，即 <code>bean instanceof BeanNameAware</code></li>
+<li>然后将bean强制类型转换为BeanNameAware</li>
+<li>再调用<code>bean.setBeanName(beanName)</code>方法即可，就设置了beanName。</li>
+<li>注意：<code>setBeanName(beanName)</code>方法的内容是要自己写的哦。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Aware回调：设置beanName</span><br><span class="hljs-keyword">if</span> (instance <span class="hljs-keyword">instanceof</span> BeanNameAware)<br>&#123;<br>    <span class="hljs-comment">// 设置beanName</span><br>    ((BeanNameAware) instance).setBeanName(beanName);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>总结：过一遍ZzflybirdApplicationContext类的初始化过程，和getBean的过程；</p>
+<p><strong>着重理解BeanPostProcessor 机制的实现原理。</strong></p>
+<h1 id="第3节"><a href="#第3节" class="headerlink" title="第3节"></a>第3节</h1><p>4h48m, 03-Spring之底层架构核心概念解析</p>
+<p>课程内容<br>1、BeanDefinition以及 BeanDefinitionReader<br>2、BeanFactory与ApplicationContext<br>3、Spring中的类型转化组件<br>4、Spring中的比较器OrderComparator<br>5、BeanPostProcessor与 BeanFactoryPostProcessor<br>6、Spring中特殊的Bean之FactoryBean<br>7、ExcludeFilter和IncludeFilter<br>8、Spring中类元数据读取 器之MetadataReader</p>
+<p>创建BeanDefinition的方法有两种：</p>
+<p>声明式定义Bean；声明式有：@Component、@Bean、xml声明Bean。spring底层会为这些Bean自动创建BeanDefinition对象，然后去读取Bean的各种信息和属性放入BeanDefinition对象中。</p>
+<p>编程式定义Bean；</p>
+<p>1、Spring的底层要使用编程式的方法创建BeanDefinition对象。如下图方框中的代码，在源码中很多使用这种方式创建BeanDefinition的。</p>
+<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220527224307025.png" srcset="/blog/img/loading.gif" lazyload alt="image-20220527224307025"></p>
+<p>注册Bean的：</p>
+<p>AnotatedBeanDefinitionReader，传Bean.class</p>
+<p>XmlBeanDefinitionReader，传sping.xml</p>
+<p>扫描器：</p>
+<p>ClassPathBeanDefinitionScanner，传一个string扫描路径。</p>
+<p>总结：</p>
+<p>AnotatedBeanDefinitionReader是用来注册BeanDefinition的，得到的是<strong>AnotatedGenricBeanDefinition</strong></p>
+<p>ClassPathBeanDefinitionScanner是用来扫描BeanDefinition的，得到的是<strong>ScanedGenericBeanDefinition</strong></p>
+<p>这两个BeanDefinition都是一个抽象类<strong>AbstractGenericBeanDefinition</strong>的子类。</p>
+<p>所以BeanDefinition整体看来是有一个，但是在底层是细分为2种不同的BeanDefinition的。</p>
+<h3 id="BeanFactory-amp-AppcationContext"><a href="#BeanFactory-amp-AppcationContext" class="headerlink" title="BeanFactory &amp; AppcationContext"></a>BeanFactory &amp; AppcationContext</h3><p>Sping中，BeanFactory是一个接口，AppcationContext也是一个接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BeanFactory</span> <br></code></pre></td></tr></table></figure>
+
+<p>AppcationContext接口是继承了BeanFactory接口的，</p>
+<p>什么意思呢？</p>
+<p>AppcationContext就是一个BeanFactory，BeanFactory接口有的方法它都有。</p>
+<p>例如: context.getBean()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ApplicationContext</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">EnvironmentCapable</span>, ListableBeanFactory, HierarchicalBeanFactory, MessageSource, ApplicationEventPublisher, ResourcePatternResolver<br></code></pre></td></tr></table></figure>
+
+<p><code>ApplicationContext</code>除了继承了BeanFactory接口，还继承了其他的接口，这些其他的接口是BeanFactory所没有的功能；</p>
+<p>EnvironmentCapable：获取环境变量的功能</p>
+<p>MessageSource：进行国际化的功能</p>
+<p>ApplicationEventPublisher：事件发布器</p>
+<p>ResourcePatternResolver：拥有直接解析某些资源的功能</p>
+<p>DefaultListableBeanFactory是BeanFactory一个非常强大的实现类。</p>
+<p>BeanFactory可以用来注册beanDefinition对象。</p>
+<p>ApplicationContext的getBean()方法的底层是通过创建一个DefaultListableBeanFactory作为beanFactory来调用beanFactory的getBean()方法的。</p>
+<p>DefaultListableBeanFactory涉及到的接口：</p>
+<p>HierarchicalBeanFactory：这个接口可以获得子BeanFactory的父BeanFactory</p>
+<p>ListableBeanFactory：Listable展示Bean的名字、数量、统计信息，得到某一个类型的Bean信息</p>
+<p>事件发布器；</p>
+<p>事件监听器；</p>
+<p>类型转换器：</p>
+<p>ComponentScan扫描可以排除，也可以包含；</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202205263846569680/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringMVC笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/20220517433679196/">
+                        <span class="hidden-mobile">git报错：fatal: unable to access 'https://github.com/xxxxxx/xxxxxx.github.io.git/': OpenSSL SSL_read: Connection was reset, errno 10054</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","appKey":"TSk3z5eAUFeKIIBzqogbMW4e","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">载入网站运行时间...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>

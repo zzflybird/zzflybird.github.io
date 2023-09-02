@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zzflybird">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="更全、更深  TCP一台服务器最大可以支撑多少条TCP连接？理论上，一条TCP连接由一个四元组组成，分别是源IP地址，目的IP地址，源端口号，目的端口号。任意一个元素发生了改变，就代表的是一条完全不同的连接了。 对于服务端：拿服务端的Nginx举例，服务端的IP地址是固定的，端口号是固定的80，只有源IP地址、源端口号是可变的。IPv4地址是32位，有$2^32$个IP数，端口号是16位，有$2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网常见问题记录">
+<meta property="og:url" content="https://zzflybird.github.io/blog/202208071957406245/index.html">
+<meta property="og:site_name" content="zzflybird">
+<meta property="og:description" content="更全、更深  TCP一台服务器最大可以支撑多少条TCP连接？理论上，一条TCP连接由一个四元组组成，分别是源IP地址，目的IP地址，源端口号，目的端口号。任意一个元素发生了改变，就代表的是一条完全不同的连接了。 对于服务端：拿服务端的Nginx举例，服务端的IP地址是固定的，端口号是固定的80，只有源IP地址、源端口号是可变的。IPv4地址是32位，有$2^32$个IP数，端口号是16位，有$2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-07T03:13:35.000Z">
+<meta property="article:modified_time" content="2022-08-14T03:51:09.857Z">
+<meta property="article:author" content="zzflybird">
+<meta property="article:tag" content="计网">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>计网常见问题记录 - zzflybird</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/blog/css/test.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zzflybird.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/blog/atom.xml" title="zzflybird" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>zzflybird&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计网常见问题记录">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-08-07 11:13" pubdate>
+        2022年8月7日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计网常见问题记录</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年8月14日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>更全、更深</p>
+</blockquote>
+<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h2 id="一台服务器最大可以支撑多少条TCP连接？"><a href="#一台服务器最大可以支撑多少条TCP连接？" class="headerlink" title="一台服务器最大可以支撑多少条TCP连接？"></a>一台服务器最大可以支撑多少条TCP连接？</h2><p>理论上，一条TCP连接由一个四元组组成，分别是<strong>源IP地址，目的IP地址，源端口号，目的端口号</strong>。任意一个元素发生了改变，就代表的是一条完全不同的连接了。</p>
+<p>对于服务端：<br>拿服务端的Nginx举例，服务端的IP地址是固定的，端口号是固定的80，只有源IP地址、源端口号是可变的。IPv4地址是32位，有$2^32$个IP数，端口号是16位，有$2^16&#x3D;65535$个port数。因此，理论上Nginx最多可以建立$2^32 * 2^16$个连接。</p>
+<p>对于BS架构的浏览器端来说：<br>源IP地址和源端口号是不变的，目的端（服务器端）的端口号是80端口，是不变的，唯一可变的就是服务器端的IP地址是可变的。如果是IPv4网络下，IP地址是32位的，那么浏览器最多能够建立$2^32$个连接。</p>
+<p>服务器能处理的并发数量和处理每个连接的数据处理工作量有关：<br>如果只建立连接不发送数据，不接收数据，服务器对cpu的需求就很少，只有处理连接握手的时候才需要一些资源。</p>
+<p>但是，每维持一条TCP连接，就需要创建一个文件对象。（因为Linux是一切皆文件，socket也是文件）</p>
+<h2 id="重发超时如何确定？"><a href="#重发超时如何确定？" class="headerlink" title="重发超时如何确定？"></a>重发超时如何确定？</h2><p>重发超时指的是 在重发数据之前，等待确认应答到来的那个特定时间间隔。<br>如果超过这个时间仍然没有收到确认应答，发送端就认为数据丢失，会重发数据。</p>
+<p>TCP在发送数据包时会计算 往返时间（Round Trip Time, RTT，指报文段的往返时间）和偏差（往返时间波动的值、方差，有时也叫抖动）。</p>
+<p><strong>重发超时的时间，是比 往返时间+偏差 稍大一点的值。</strong></p>
+<ul>
+<li>数据重发后，如果还是收不到确认应答，就再次发送数据。这时，重发时间会以2倍、4倍的指数函数变大。</li>
+<li>数据不会被无线重发。达到一定重发次数后，还是收不到确认应答，就判断为网络或对方主机发生异常，强制关闭连接；并通知应用通信异常强行终止。</li>
+</ul>
+<h2 id="TCP的连接管理"><a href="#TCP的连接管理" class="headerlink" title="TCP的连接管理"></a>TCP的连接管理</h2><p>TCP是面向连接的，面向连接是指在发生数据之前要先做好通信两端的准备工作，建立连接，然后再发送数据。<br>UDP是面向无连接的，不检查对端是否可以通信，直接将UDP包发送出去。</p>
+<ul>
+<li><p>TCP在数据通信前，通过TCP首部发送一个SYN包，请求建立连接，并等待对方的确认应答。如果对方发来确认应答ACK和SYN，则针对对方的SYN发送确认应答ACK，确认建立连接。</p>
+</li>
+<li><p>一个TCP连接的建立和断开，正常过程至少需要来回发送7个包才能完成：建立连接需要发送3个包，三次握手；断开连接4个包，4次挥手。</p>
+</li>
+</ul>
+<h2 id="TCP以段位单位发送数据"><a href="#TCP以段位单位发送数据" class="headerlink" title="TCP以段位单位发送数据"></a>TCP以段位单位发送数据</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods</a></p>
+</blockquote>
+<h2 id="你知道哪些-HTTP-请求方法？"><a href="#你知道哪些-HTTP-请求方法？" class="headerlink" title="你知道哪些 HTTP 请求方法？"></a>你知道哪些 HTTP 请求方法？</h2><blockquote>
+<p>HTTP 1.0 定义了三种请求方法： GET, POST 和 HEAD 方法。HTTP 1.1 新增了六种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法。<br>其中 GET 和 POST 的区别是 …； 其中 OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法的作用是 …。</p>
+</blockquote>
+<h2 id="HTTP-1-0-和-HTTP-1-1-甚至和-HTTP-x2F-2-有什么区别？"><a href="#HTTP-1-0-和-HTTP-1-1-甚至和-HTTP-x2F-2-有什么区别？" class="headerlink" title="HTTP 1.0 和 HTTP 1.1 甚至和 HTTP&#x2F;2 有什么区别？"></a>HTTP 1.0 和 HTTP 1.1 甚至和 HTTP&#x2F;2 有什么区别？</h2><blockquote>
+<p>HTTP 1.x ,HTTP&#x2F;2 的对比区别</p>
+</blockquote>
+<h5 id="ipv4网络下，浏览器端理论上可以和服务端建立多少个连接呢？"><a href="#ipv4网络下，浏览器端理论上可以和服务端建立多少个连接呢？" class="headerlink" title="ipv4网络下，浏览器端理论上可以和服务端建立多少个连接呢？"></a>ipv4网络下，浏览器端理论上可以和服务端建立多少个连接呢？</h5>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E8%AE%A1%E7%BD%91/">计网</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202208132751047154/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">好未来笔试-Java-20220813</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202208063305694406/">
+                        <span class="hidden-mobile">Java中的值传递</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","appKey":"TSk3z5eAUFeKIIBzqogbMW4e","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">载入网站运行时间...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>

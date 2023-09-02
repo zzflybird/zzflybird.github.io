@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zzflybird">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Java题目笔记 2022-06-19更新  Mysql(版本8.0.25)不支持full join, 执行full join 语句会报错。 2022-06-17更新  Java权限修饰符：private 和 public很容易理解，分别是只能类内部访问和任何地方都可以访问。比较让人容易分不清楚的，默认default的和protected的，默认的权限是类内部和在同一个包下可以访问；保护的权限是类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java笔记记录">
+<meta property="og:url" content="https://zzflybird.github.io/blog/202206171550268860/index.html">
+<meta property="og:site_name" content="zzflybird">
+<meta property="og:description" content="Java题目笔记 2022-06-19更新  Mysql(版本8.0.25)不支持full join, 执行full join 语句会报错。 2022-06-17更新  Java权限修饰符：private 和 public很容易理解，分别是只能类内部访问和任何地方都可以访问。比较让人容易分不清楚的，默认default的和protected的，默认的权限是类内部和在同一个包下可以访问；保护的权限是类">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180815/6855549_1534301601111_994B36FBA5D0176311889BFCC3F57C1F">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20200805/643412545_1596634989327_DEF638F8839D3C558612E08DC0A11BFF">
+<meta property="og:image" content="https://zzflybird.github.io/blog/.io//202206171550268860/image-20220518125702351.png">
+<meta property="article:published_time" content="2022-06-17T08:42:12.000Z">
+<meta property="article:modified_time" content="2022-06-19T08:51:32.000Z">
+<meta property="article:author" content="zzflybird">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://uploadfiles.nowcoder.com/images/20180815/6855549_1534301601111_994B36FBA5D0176311889BFCC3F57C1F">
+  
+  
+  <title>java笔记记录 - zzflybird</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/blog/css/test.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zzflybird.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/blog/atom.xml" title="zzflybird" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>zzflybird&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="java笔记记录">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-06-17 16:42" pubdate>
+        2022年6月17日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      93 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">java笔记记录</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年6月19日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Java题目笔记"><a href="#Java题目笔记" class="headerlink" title="Java题目笔记"></a>Java题目笔记</h1><blockquote>
+<p>2022-06-19更新</p>
+</blockquote>
+<h2 id="Mysql-版本8-0-25-不支持full-join-执行full-join-语句会报错。"><a href="#Mysql-版本8-0-25-不支持full-join-执行full-join-语句会报错。" class="headerlink" title="Mysql(版本8.0.25)不支持full join, 执行full join 语句会报错。"></a>Mysql(版本8.0.25)不支持full join, 执行full join 语句会报错。</h2><blockquote>
+<p>2022-06-17更新</p>
+</blockquote>
+<h2 id="Java权限修饰符："><a href="#Java权限修饰符：" class="headerlink" title="Java权限修饰符："></a>Java权限修饰符：</h2><p><img src="https://uploadfiles.nowcoder.com/images/20180815/6855549_1534301601111_994B36FBA5D0176311889BFCC3F57C1F" srcset="/blog/img/loading.gif" lazyload alt="图片"><br>private 和 public很容易理解，分别是只能类内部访问和任何地方都可以访问。<br>比较让人容易分不清楚的，默认default的和protected的，默认的权限是类内部和在同一个包下可以访问；保护的权限是类内部、同一个包下和不在同一个包中的子类中可以访问。</p>
+<h2 id="hashCode-和equals"><a href="#hashCode-和equals" class="headerlink" title="hashCode()和equals()"></a>hashCode()和equals()</h2><p>hashCode()方法并不完全可靠，有时不同对象的hashCode()生成的hash值也是相同的，所以这时候需要再使用equals()来进行比较。</p>
+<p>那为什么不直接都使用equals()进行比较呢？因为重写的equals()方法往往比较复杂，为了提高程序的效率，一般先使用hashCode()进行比较，如果两个对象的hash值不相等，则两个对象肯定不相等，直接返回false；如果hash值相等，则需要再使用equals()进行比较。</p>
+<p>所以，做个总结：</p>
+<ol>
+<li>equals()相等的两个对象，它们的hashCode()肯定相等，使用equals()对比是绝对可靠的。</li>
+<li>hashCode()相等的两个对象，它们的equals()不一定相等。hashCode()不是绝对可靠的。</li>
+</ol>
+<p>正因为hashCode()不是绝对可靠的，所以需要再使用equals()来进行对比。</p>
+<h2 id="关于try、catch、finally的执行顺序"><a href="#关于try、catch、finally的执行顺序" class="headerlink" title="关于try、catch、finally的执行顺序"></a>关于try、catch、finally的执行顺序</h2><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(test());<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(temp); <span class="hljs-comment">// 打印1</span><br>            <span class="hljs-keyword">return</span> ++temp; <span class="hljs-comment">// temp:2, 保存这个值 2</span><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(temp);<br>            <span class="hljs-keyword">return</span> ++temp;<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            ++temp; <span class="hljs-comment">//执行finally中的该语句，--&gt; temp:3</span><br>            System.out.println(temp); <span class="hljs-comment">// 打印3</span><br>        &#125; <span class="hljs-comment">// 执行完finally中的语句，打印完3后，再返回到try中的return语句，返回当时保存的值 2</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>最终的顺序是：</p>
+<ol>
+<li>先打印try中的1，temp加1变为2，保存当前这个值2</li>
+<li>转去执行finally中的语句，temp加1变为3，打印3</li>
+<li>执行完finally后，返回到try中的return语句，返回第1步保存的值2.<br>所以最终的打印顺序是：1, 3, 2</li>
+</ol>
+<p>try中的return的值会被保存到临时空间中，执行完finally后，方法结束，再返回临时空间中保存的值；<br>如果finally中有return temp+10;的话，则会刷新临时空间的值，最后仍返回临时空间的值。</p>
+<hr>
+<p>类的私有变量，本类的方法可以访问，通过反射也可以访问到。</p>
+<h2 id="abstract和final可以同时作为一个类的修饰符吗？"><a href="#abstract和final可以同时作为一个类的修饰符吗？" class="headerlink" title="abstract和final可以同时作为一个类的修饰符吗？"></a>abstract和final可以同时作为一个类的修饰符吗？</h2><p>abstract表示该类是一个抽象类。抽象类本身不能实例化，必须需要有子类继承它并实现抽象类中的所有抽象方法，子类才能实例化。<br>而final表示该类不能被继承。<br>因此这两个关键字的作用：前者表示该类必须被继承，后者表示该类不能被继承，是相克的，不能同时使用。</p>
+<h2 id="当把来自客户机的HTTP请求委托给servlet时，会调用HttpServlet的（service）方法"><a href="#当把来自客户机的HTTP请求委托给servlet时，会调用HttpServlet的（service）方法" class="headerlink" title="当把来自客户机的HTTP请求委托给servlet时，会调用HttpServlet的（service）方法"></a>当把来自客户机的HTTP请求委托给servlet时，会调用HttpServlet的（service）方法</h2><p>HttpServlet容器响应Web客户请求流程如下：<br>1）Web客户向Servlet容器发出Http请求；</p>
+<p>2）Servlet容器解析Web客户的Http请求；</p>
+<p>3）Servlet容器创建一个HttpRequest对象，在这个对象中封装Http请求信息；</p>
+<p>4）Servlet容器创建一个HttpResponse对象；</p>
+<p>5）Servlet容器调用HttpServlet的service方法，这个方法中会根据request的Method来判断具体是执行doGet还是doPost，把HttpRequest和HttpResponse对象作为service方法的参数传给HttpServlet对象；</p>
+<p>6）HttpServlet调用HttpRequest的有关方法，获取HTTP请求信息；</p>
+<p>7）HttpServlet调用HttpResponse的有关方法，生成响应数据；</p>
+<p>8）Servlet容器把HttpServlet的响应结果传给Web客户。</p>
+<p>doGet() 或 doPost() 是创建HttpServlet时需要覆盖的方法.</p>
+<h2 id="抽象类和接口不能实例化"><a href="#抽象类和接口不能实例化" class="headerlink" title="抽象类和接口不能实例化"></a>抽象类和接口不能实例化</h2><p>抽象类 a &#x3D; new 子类(); 是可以的。</p>
+<h2 id="字符流和字节流"><a href="#字符流和字节流" class="headerlink" title="字符流和字节流"></a>字符流和字节流</h2><p>如图<br><img src="https://uploadfiles.nowcoder.com/images/20200805/643412545_1596634989327_DEF638F8839D3C558612E08DC0A11BFF" srcset="/blog/img/loading.gif" lazyload alt="图片"><br>字节流：InputStream, OutputStream</p>
+<p>字符流：多用于处理字符串和文本。面向字符的输入流类都是Reader的子类，面向字符的输出流类都是Writer的子类。一般以 reader 或 writer 结尾。</p>
+<h2 id="JVM的内存结构"><a href="#JVM的内存结构" class="headerlink" title="JVM的内存结构"></a>JVM的内存结构</h2><p><a target="_blank" rel="noopener" href="https://uploadfiles.nowcoder.com/images/20190314/242025553_1552556718666_11CD8DF4C9693369E94F5F84238EBBC6">JVM图片</a></p>
+<ul>
+<li>PC寄存器</li>
+<li>虚拟机栈</li>
+<li>堆</li>
+<li>方法区 (常量池)</li>
+<li>本地方法栈</li>
+</ul>
+<hr>
+<blockquote>
+<p>2022-06-18</p>
+</blockquote>
+<h2 id="垃圾回收不能确定具体的回收时间"><a href="#垃圾回收不能确定具体的回收时间" class="headerlink" title="垃圾回收不能确定具体的回收时间"></a>垃圾回收不能确定具体的回收时间</h2><p>GC是完全自动的，不能被强制执行。<br>将某个局部变量置为null，只是表示可能会被回收，但是后面可能还会使用。 </p>
+<h2 id="静态代码块、构造代码块和构造方法的执行时期"><a href="#静态代码块、构造代码块和构造方法的执行时期" class="headerlink" title="静态代码块、构造代码块和构造方法的执行时期"></a>静态代码块、构造代码块和构造方法的执行时期</h2><p>1.静态代码块 2.构造代码块3.构造方法的执行顺序是1&gt;2&gt;3;明白他们是干嘛的就理解了。<br>1.静态代码块：是在类的加载过程的第三步初始化的时候进行的，主要目的是给类变量赋予初始值。<br>2.构造代码块：是独立的，必须依附载体才能运行，Java会把构造代码块放到每种构造方法的前面，用于实例化一些共有的实例变量，减少代码量。<br>3.构造方法：用于实例化变量。<br>1是类级别的，2、3是实例级别的，自然1要优先23.<br>在就明白一点：对子类得主动使用会导致对其父类得主动使用，所以尽管实例化的是子类，但也会导致父类的初始化和实例化，且优于子类执行。</p>
+<p>Java程序初始化工作可以在许多不同的代码块中来完成，它们的执行顺序如下：<br><strong>父类</strong>的静态变量、父类的静态代码块、<strong>子类</strong>的静态变量、子类的静态代码块、<br>父类的非静态变量、父类的非静态代码块、父类的构造函数、<br>子类的非静态变量、子类的非静态代码块、子类的构造函数。</p>
+<h2 id="Java构造方法不能被static、final、synchronized、abstract、native修饰，但可以被public、private、protected修饰；"><a href="#Java构造方法不能被static、final、synchronized、abstract、native修饰，但可以被public、private、protected修饰；" class="headerlink" title="Java构造方法不能被static、final、synchronized、abstract、native修饰，但可以被public、private、protected修饰；"></a>Java构造方法不能被static、final、synchronized、abstract、native修饰，但可以被public、private、protected修饰；</h2><p>识别合法的构造方法；<br>  1：构造方法可以被重载，一个构造方法可以通过this关键字调用另一个构造方法，this语句必须位于构造方法的第一行；<br>    重载：方法的重载(overload)：重载构成的条件：方法的名称相同，但参数类型或参数个数不同，才能构成方法的重载。 </p>
+<p>  2 当一个类中没有定义任何构造方法，Java将自动提供一个缺省构造方法；<br>  3 子类通过super关键字调用父类的一个构造方法；<br>  4 当子类的某个构造方法没有通过super关键字调用父类的构造方法，通过这个构造方法创建子类对象时，会自动先调用父类的缺省构造方法<br>  5 构造方法不能被static、final、synchronized、abstract、native修饰，但可以被public、private、protected修饰；<br>  6 构造方法不是类的成员方法；<br>  7 构造方法不能被继承。</p>
+<p>  8 java构造方法中的this关键字： 构造器的this指向同一个类中，用于调用同一个类中不同参数列表的另外一个构造器，必须放在第一行，否则会引起编译错误！<br>  9 java构造方法中的super关键字：构造方法的super关键字用于调用其父类的构造方法，子类默认调用父类的构造方法，也就是说super（）是默认调用的，显示调用必须放在构造方法第一行！</p>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p><strong>整数型变量：byte, short, int ,long</strong><br>浮点型：float, double<br>逻辑型：boolean<br>字符型：char</p>
+<h2 id="静态方法中不能直接调用非静态方法和非静态变量"><a href="#静态方法中不能直接调用非静态方法和非静态变量" class="headerlink" title="静态方法中不能直接调用非静态方法和非静态变量"></a>静态方法中不能直接调用非静态方法和非静态变量</h2><p>会在编译时报错：<br>Non-static field ‘a’ cannot be referenced from a static context</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test1</span> &#123;<br>    <span class="hljs-comment">// 非静态变量</span><br>    <span class="hljs-type">int</span> a[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">6</span>];<br>    <span class="hljs-comment">// 静态方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(a[<span class="hljs-number">0</span>]); <span class="hljs-comment">// 报错</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Java的反射"><a href="#Java的反射" class="headerlink" title="Java的反射"></a>Java的反射</h2><ul>
+<li>反射涉及的类如：Class在lang包下，Method, Filed 在java.lang.reflet包下。</li>
+<li>通过反射可以动态的实现一个接口，形成一个新的类，并可以用这个类创建对象，调用对象方法。即通过反射实现动态代理。</li>
+<li>通过反射，可以突破Java语言提供的对象成员、类成员的保护机制，访问一般方式不能访问的成员。例如：通过反射访问私有成员时，Field调用<code>setAccessible</code>可解除访问符限制。</li>
+<li>反射不能实现对字节码的修改</li>
+<li>Java的反射机制会带来效率问题，使用cache和禁止安全检查等都可以提升反射的效率，但即使再怎么优化也不可能达到和直接调用类一样的效率，因为无论是通过字符串获取Class、Method还是Field，<strong>都需要JVM的动态链接机制动态的进行解析和匹配</strong>（即告诉JVM该如何去找这个类），而直接调用则不必。</li>
+</ul>
+<hr>
+<h1 id="8、面向对象"><a href="#8、面向对象" class="headerlink" title="8、面向对象"></a>8、面向对象</h1><h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><ul>
+<li>this修饰成员属性</li>
+<li>this修饰成员函数</li>
+<li>this可以在同一个类中调用构造器，this调用构造器必须放在第一行。</li>
+</ul>
+<h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><ul>
+<li>修饰属性</li>
+<li>修饰方法：类的静态方法中不能访问非静态方法和非静态属性。</li>
+<li>修饰代码块：执行顺序，<strong>静态块–》构造块–》构造器–》成员方法中的普通块</strong>。注意：静态块只在类加载的时候执行一次。<strong>静态块中只能访问静态成员变量和静态成员方法</strong>，不能访问非静态成员方法和非静态成员方法。</li>
+<li>修饰内部类：</li>
+</ul>
+<h2 id="三大特性"><a href="#三大特性" class="headerlink" title="三大特性"></a>三大特性</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>提高代码的安全性</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>提高代码的复用性</p>
+<p>父类private修饰的内容，子类实际上也继承，只是因为封装的特性阻碍了直接调用，但是提供了间接调用的方式，可以间接调用。</p>
+<h4 id="内存分析"><a href="#内存分析" class="headerlink" title="内存分析"></a>内存分析</h4><h4 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h4><blockquote>
+<p>总结：<br>属性，方法：修饰符：四种：private，缺省，protected，public<br>类：修饰符：两种：缺省，public</p>
+<p>以后写代码<br>一般属性：用private修饰 ，方法：用public修饰</p>
+</blockquote>
+<h4 id="重载和重写的区别："><a href="#重载和重写的区别：" class="headerlink" title="重载和重写的区别："></a>重载和重写的区别：</h4><p>重载：在同一个类中，当方法名相同，形参列表不同的时候  多个方法构成了重载<br>重写：在不同的类中，子类对父类提供的方法不满意的时候，要对父类的方法进行重写。</p>
+<h4 id="super"><a href="#super" class="headerlink" title="super"></a>super</h4><h4 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h4><p>toString方法</p>
+<p>equals方法</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>提高代码的扩展性</p>
+<h3 id="final"><a href="#final" class="headerlink" title="final"></a>final</h3><p>修饰基本数据类型，变量值不能改变，是一个常量。</p>
+<p>修饰引用数据类型，对象的引用，也就是对象的指向不能改变，对象的属性可以修改。</p>
+<p>修饰方法，该方法不能被该类的子类重写。</p>
+<p>修饰类，表示该类不能被继承，也就是没有子类。</p>
+<h3 id="抽象类，抽象方法"><a href="#抽象类，抽象方法" class="headerlink" title="抽象类，抽象方法"></a>抽象类，抽象方法</h3><ul>
+<li>抽象类是否可以创建对象？</li>
+</ul>
+<p>不可以</p>
+<ul>
+<li>抽象类中是否有构造器？</li>
+</ul>
+<p>有的。子类创建对象初始化时调用子类的构造器，会先使用super调用抽象类的构造器。</p>
+<ul>
+<li>抽象类是否可以被<code>final</code>修饰？</li>
+</ul>
+<p>不能，因为抽象类就是用于被继承的，<code>final</code>修饰的类不能被继承，就没有子类了。</p>
+<p>需要被子类重写的方法加上<code>abstract</code>，去除函数体，就是抽象方法了，抽象方法必须要被子类重写。</p>
+<p>子类如果没有重写父类的全部抽象方法，那么子类也可以变成一个抽象类。</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="抽象类与接口的区别"><a href="#抽象类与接口的区别" class="headerlink" title="抽象类与接口的区别"></a>抽象类与接口的区别</h4><table>
+<thead>
+<tr>
+<th>抽象类</th>
+<th>接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>使用abstract修饰</td>
+<td>使用interface修饰</td>
+</tr>
+<tr>
+<td>不能实例化</td>
+<td>不能实例化</td>
+</tr>
+<tr>
+<td>有构造方法</td>
+<td>无构造方法</td>
+</tr>
+<tr>
+<td>含有抽象方法的类是抽象类，必须使用abstract修饰</td>
+<td>一个类只能继承一个类，但是可以实现多个接口</td>
+</tr>
+<tr>
+<td><strong>可以含有抽象方法，也可以不包含抽象方法，抽象类中可以有具体的方法</strong></td>
+<td>接口中的方法均为抽象方法</td>
+</tr>
+<tr>
+<td>若子类实现了抽象类的所有抽象方法，则子类不是抽象类；否则子类是抽象类</td>
+<td>接口中不能包含<strong>实例域或静态方法</strong>（静态方法必须实现，而接口中都是抽象方法，不能实现）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Package ‘com.xxx.demo12’ clashes with class of same name</p>
+<p>爆红：包名与类名冲突</p>
+</blockquote>
+<h4 id="JDK1-8前后接口的变化"><a href="#JDK1-8前后接口的变化" class="headerlink" title="JDK1.8前后接口的变化"></a>JDK1.8前后接口的变化</h4><table>
+<thead>
+<tr>
+<th>JDK1.8前，接口仅包含常量和抽象方法</th>
+<th>JDK1.8后，接口新增非抽象方法（可以有函数体）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>常量：public static final</td>
+<td>常量：public static final</td>
+</tr>
+<tr>
+<td>抽象方法：public abstract</td>
+<td>抽象方法：public abstract</td>
+</tr>
+<tr>
+<td></td>
+<td>非抽象方法：public <strong>default</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>实现类要想重写非抽象方法，那么default修饰符不能加</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>静态方法：</strong>public <strong>static</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>static不能省略；静态方法不能在实现类重写</td>
+</tr>
+</tbody></table>
+<h4 id="为什么要在接口中加入非抽象方法？"><a href="#为什么要在接口中加入非抽象方法？" class="headerlink" title="为什么要在接口中加入非抽象方法？"></a>为什么要在接口中加入非抽象方法？</h4><p>Java 8新增了default方法，它可以在接口添加新功能特性，而且还不影响接口的实现类。</p>
+<p>Q：在面向接口编程的过程中，如果<strong>发现原有的接口中，都需要添加一个相同的方法</strong>，有两种实现方案：</p>
+<ol>
+<li>把接口换成抽象类，在抽象类中添加该方法（需要改动代码）</li>
+<li>在接口中添加该抽象方法，在每一个接口的实现类中，都要添加相同的实现方法，代码的改动是相当大的。</li>
+</ol>
+<p>两种方法对代码的改动都是很大的。<strong>如果使用接口的默认方法，是接口本身就拥有某些功能的实现，就很好的解决了问题。</strong></p>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>成员内部类：静态成员内部类，非静态成员内部类</p>
+<p>局部内部类：（方法中，块中，构造器中）</p>
+<p>匿名内部类</p>
+<h1 id="9、异常"><a href="#9、异常" class="headerlink" title="9、异常"></a>9、异常</h1><p>Error：错误</p>
+<p>Exception：</p>
+<ol>
+<li>检查异常</li>
+<li>运行时异常</li>
+</ol>
+<img src="/blog/.io//202206171550268860/image-20220518125702351.png" srcset="/blog/img/loading.gif" lazyload class title="异常分类">
+
+<h1 id="10、常用类"><a href="#10、常用类" class="headerlink" title="10、常用类"></a>10、常用类</h1><h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><p>自动装箱，自动拆箱</p>
+<p>日期类</p>
+<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><h2 id="Random类"><a href="#Random类" class="headerlink" title="Random类"></a>Random类</h2><h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><p>不可变的，底层实现是<code>final char value[]</code>也是数组，不过是final的。</p>
+<h2 id="StringBuider类，StringBuffer类"><a href="#StringBuider类，StringBuffer类" class="headerlink" title="StringBuider类，StringBuffer类"></a>StringBuider类，StringBuffer类</h2><p>StringBuider的底层实现是数组<code>char value = new char[capacity];</code>，可变数组，可以动态扩容，最初数组容量为16，一旦向里面加入的字符串的长度大于16时，就会扩容，扩容规则为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java">value = Arrays.copyOf(value,<br>                    newCapacity(minimumCapacity));<br>调用下面的方法：<br><span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">newCapacity</span><span class="hljs-params">(<span class="hljs-type">int</span> minCapacity)</span> &#123;<br>        <span class="hljs-comment">// overflow-conscious code</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">newCapacity</span> <span class="hljs-operator">=</span> (value.length &lt;&lt; <span class="hljs-number">1</span>) + <span class="hljs-number">2</span>;<span class="hljs-comment">// 扩容逻辑</span><br>        <span class="hljs-keyword">if</span> (newCapacity - minCapacity &lt; <span class="hljs-number">0</span>) &#123;<br>            newCapacity = minCapacity;<br>        &#125;<br>        <span class="hljs-keyword">return</span> (newCapacity &lt;= <span class="hljs-number">0</span> || MAX_ARRAY_SIZE - newCapacity &lt; <span class="hljs-number">0</span>)<br>            ? hugeCapacity(minCapacity)<br>            : newCapacity;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="StringBuider类，StringBuffer类的区别？"><a href="#StringBuider类，StringBuffer类的区别？" class="headerlink" title="StringBuider类，StringBuffer类的区别？"></a>StringBuider类，StringBuffer类的区别？</h4><p>底层都是可变char数组，区别是StringBuilder是线程不安全的，效率高；StringBuffer是线程安全的，效率低。</p>
+<p>StringBuffer的大多数方法都加了<code>synchronized</code>关键字，上了锁，所以效率低，一般优先考虑使用StringBuilder。</p>
+<h1 id="11、集合"><a href="#11、集合" class="headerlink" title="11、集合"></a>11、集合</h1><h2 id="1、Collection接口"><a href="#1、Collection接口" class="headerlink" title="1、Collection接口"></a>1、Collection接口</h2><p>——List接口：实现类有，ArrayList，LinkedList</p>
+<p>——Set接口：实现类有, HashSet, TreeSet</p>
+<p>ArrayList实现类：</p>
+<p>在jdk1.7中，数组初始默认容量为10,</p>
+<p>数组的扩容；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">newCapacity</span> <span class="hljs-operator">=</span> oldCapacity + (oldCapacity &gt;&gt; <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+
+<p>扩容1.5倍。原容量为10，新容量为15；</p>
+<p>在jdk1.8中，调用空构造器，底层数组初始化为{}，数组容量最初为0，然后变为10；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// jdk1.8</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">ArrayList</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-built_in">this</span>.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;<br>    &#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>Vector容器，底层扩容数组长度为原来2倍。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">newCapacity</span> <span class="hljs-operator">=</span> oldCapacity + ((capacityIncrement &gt; <span class="hljs-number">0</span>) ? <span class="hljs-comment">// capacityIncrement=0</span><br>                                 capacityIncrement : oldCapacity);<br><span class="hljs-comment">// int newCapacity = oldCapacity + oldCapacity</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><blockquote>
+<p>元素的类型参数叫做泛型</p>
+</blockquote>
+<h4 id><a href="#" class="headerlink" title></a></h4><h2 id="2、Map接口"><a href="#2、Map接口" class="headerlink" title="2、Map接口"></a>2、Map接口</h2><h3 id="HashMap原理及内部存储结构"><a href="#HashMap原理及内部存储结构" class="headerlink" title="HashMap原理及内部存储结构"></a>HashMap原理及内部存储结构</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903763715555336#comment">https://juejin.cn/post/6844903763715555336#comment</a></p>
+<h3 id="HashMap源码线程安全性问题（1-8）"><a href="#HashMap源码线程安全性问题（1-8）" class="headerlink" title="HashMap源码线程安全性问题（1.8）"></a>HashMap源码线程安全性问题（1.8）</h3><h4 id="1-多线程的map-put-方法可能导致元素的丢失："><a href="#1-多线程的map-put-方法可能导致元素的丢失：" class="headerlink" title="1 多线程的map.put()方法可能导致元素的丢失："></a>1 多线程的map.put()方法可能导致元素的丢失：</h4><p>实验代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcurrentIssueDemo1</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, String&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 线程1 =&gt; t1</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">99999999</span>; i++) &#123;<br>                    map.put(<span class="hljs-string">&quot;thread1_key&quot;</span> + i, <span class="hljs-string">&quot;thread1_value&quot;</span> + i);<br>                &#125;<br>            &#125;<br>        &#125;).start();<br>        <span class="hljs-comment">// 线程2 =&gt; t2</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">99999999</span>; i++) &#123;<br>                    map.put(<span class="hljs-string">&quot;thread2_key&quot;</span> + i, <span class="hljs-string">&quot;thread2_value&quot;</span> + i);<br>                &#125;<br>            &#125;<br>        &#125;).start();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>触发此问题的场景：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">TREEIFY_THRESHOLD</span> <span class="hljs-operator">=</span> <span class="hljs-number">8</span>; <span class="hljs-comment">// 树化阈值=8</span><br><span class="hljs-keyword">public</span> V <span class="hljs-title function_">put</span><span class="hljs-params">(K key, V value)</span> &#123;<br>    <span class="hljs-keyword">return</span> putVal(hash(key), key, value, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>);<br>&#125;<br><br><span class="hljs-keyword">final</span> V <span class="hljs-title function_">putVal</span><span class="hljs-params">(<span class="hljs-type">int</span> hash, K key, V value, <span class="hljs-type">boolean</span> onlyIfAbsent,</span><br><span class="hljs-params">                   <span class="hljs-type">boolean</span> evict)</span> &#123;<br>    	<span class="hljs-comment">// 初始化hash表tab，定义一个p，Node类型的</span><br>        Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="hljs-type">int</span> n, i;<br>        <span class="hljs-keyword">if</span> ((tab = table) == <span class="hljs-literal">null</span> || (n = tab.length) == <span class="hljs-number">0</span>)<br>            n = (tab = resize()).length;<br>    	<br>    	<span class="hljs-comment">// 通过hash值计算在hash表tab中的位置，并将这个位置上的元素赋值给p，如果该位置上为null，</span><br>    	<span class="hljs-comment">// 则new一个新的node放在该位置。</span><br>        <span class="hljs-keyword">if</span> ((p = tab[i = (n - <span class="hljs-number">1</span>) &amp; hash]) == <span class="hljs-literal">null</span>)<br>            tab[i] = newNode(hash, key, value, <span class="hljs-literal">null</span>);<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 如果hash表中已经存在元素，就向该元素后面追加链表</span><br>            Node&lt;K,V&gt; e; K k;<br>            <span class="hljs-keyword">if</span> (p.hash == hash &amp;&amp;  <span class="hljs-comment">// 判断是否和已存在的元素相同</span><br>                ((k = p.key) == key || (key != <span class="hljs-literal">null</span> &amp;&amp; key.equals(k))))<br>                e = p;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p <span class="hljs-keyword">instanceof</span> TreeNode)<br>                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="hljs-built_in">this</span>, tab, hash, key, value);<br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">binCount</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; ; ++binCount) &#123;<br>                    <span class="hljs-comment">// 新建节点，并追加到链表</span><br>                    <span class="hljs-keyword">if</span> ((e = p.next) == <span class="hljs-literal">null</span>) &#123; <span class="hljs-comment">// #1，在此处t1和t2两个线程同时执行完</span><br>                        p.next = newNode(hash, key, value, <span class="hljs-literal">null</span>); <span class="hljs-comment">// #2 </span><br>                        <span class="hljs-keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="hljs-number">1</span>) <span class="hljs-comment">// -1 for 1st</span><br>                            treeifyBin(tab, hash);<br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                    <span class="hljs-keyword">if</span> (e.hash == hash &amp;&amp;<br>                        ((k = e.key) == key || (key != <span class="hljs-literal">null</span> &amp;&amp; key.equals(k))))<br>                        <span class="hljs-keyword">break</span>;<br>                    p = e;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (e != <span class="hljs-literal">null</span>) &#123; <span class="hljs-comment">// existing mapping for key</span><br>                <span class="hljs-type">V</span> <span class="hljs-variable">oldValue</span> <span class="hljs-operator">=</span> e.value;<br>                <span class="hljs-keyword">if</span> (!onlyIfAbsent || oldValue == <span class="hljs-literal">null</span>)<br>                    e.value = value;<br>                afterNodeAccess(e);<br>                <span class="hljs-keyword">return</span> oldValue;<br>            &#125;<br>        &#125;<br>        ++modCount;<br>        <span class="hljs-keyword">if</span> (++size &gt; threshold)<br>            resize();<br>        afterNodeInsertion(evict);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>两个线程t1和t2同时执行到上述代码的注释<code>#1</code>处，然后一起向下执行，</p>
+<p>t1线程执行map.put(“key2”, “value2”)，t2线程执行map.put(“key3”, “value3”)，</p>
+<p>假设t1先执行<code>p.next = newNode(hash, key, value, null)</code>，那么会新建节点key2，并追加链表；</p>
+<p>然后t2也执行<code>p.next = newNode(hash, key, value, null)</code>， 就会将<code>p.next</code>重新指向一个新的节点key3，</p>
+<p>p.next原来指向的节点key2就丢失了。</p>
+<p>这样就产生了<strong>线程安全问题</strong>。</p>
+<h4 id="2-put和get并发时，可能导致get为null"><a href="#2-put和get并发时，可能导致get为null" class="headerlink" title="2 put和get并发时，可能导致get为null"></a>2 put和get并发时，可能导致get为null</h4><p>场景：</p>
+<p>当线程1执行put方法时，如果元素个数超出threshold需要扩容导致rehash，</p>
+<p>线程2此时执行get方法，就由可能导致get得到的值为null。</p>
+<p>扩容resize()方法源码：</p>
+<p>先计算出扩容后的容量和threshold，然后根据新容量创建新hash表，然后将旧hash表中的元素rehash到新的hash表中。</p>
+<p>重点在于<strong>创建新hash表和hash表赋值的两句代码。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">final</span> Node&lt;K,V&gt;[] resize() &#123;<br>    Node&lt;K,V&gt;[] oldTab = table;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">oldCap</span> <span class="hljs-operator">=</span> (oldTab == <span class="hljs-literal">null</span>) ? <span class="hljs-number">0</span> : oldTab.length;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">oldThr</span> <span class="hljs-operator">=</span> threshold;<br>    <span class="hljs-type">int</span> newCap, newThr = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (oldCap &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">if</span> (oldCap &gt;= MAXIMUM_CAPACITY) &#123;<br>            threshold = Integer.MAX_VALUE;<br>            <span class="hljs-keyword">return</span> oldTab;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="hljs-number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp;<br>                 oldCap &gt;= DEFAULT_INITIAL_CAPACITY)<br>            newThr = oldThr &lt;&lt; <span class="hljs-number">1</span>; <span class="hljs-comment">// double threshold</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (oldThr &gt; <span class="hljs-number">0</span>) <span class="hljs-comment">// initial capacity was placed in threshold</span><br>        newCap = oldThr;<br>    <span class="hljs-keyword">else</span> &#123;               <span class="hljs-comment">// zero initial threshold signifies using defaults</span><br>        newCap = DEFAULT_INITIAL_CAPACITY;<br>        newThr = (<span class="hljs-type">int</span>)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (newThr == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-type">float</span> <span class="hljs-variable">ft</span> <span class="hljs-operator">=</span> (<span class="hljs-type">float</span>)newCap * loadFactor;<br>        newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (<span class="hljs-type">float</span>)MAXIMUM_CAPACITY ?<br>                  (<span class="hljs-type">int</span>)ft : Integer.MAX_VALUE);<br>    &#125;<br>    threshold = newThr;<br>    <span class="hljs-comment">// 上面就是得到 新的容量newCap 和 threshold newThr</span><br>    <br>    <span class="hljs-meta">@SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)</span><br>    Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])<span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>[newCap]; <span class="hljs-comment">// #1</span><br>    table = newTab; <span class="hljs-comment">// #2</span><br>    <span class="hljs-keyword">if</span> (oldTab != <span class="hljs-literal">null</span>) &#123;<br>        ...... <span class="hljs-comment">// 将旧hash表中的元素rehash到新hash表中</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> newTab;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在代码#1位置，使用新的容量newCap创建新hash表newTab，</p>
+<p>然后在#2的位置将新hash表赋值给变量table。</p>
+<p>赋值完后，table是空的！</p>
+<p>如果此时，有线程使用get方法获取值，会得到null。</p>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>Collections工具类</p>
+<p>Stack</p>
+<p>Queue</p>
+<p>Deque</p>
+<p>并发容器</p>
+<p>ConcurrentMap</p>
+<h1 id="多线程-并发"><a href="#多线程-并发" class="headerlink" title="多线程 并发"></a>多线程 并发</h1><p>线程常见方法：</p>
+<ul>
+<li><p>join方法：当一个线程调用了join方法，这个线程就会先被执行，它执行结束以后才可以去执行其余的线程。<br>注意：必须先start，再join才有效。</p>
+</li>
+<li><p>setDaemon(true)方法; 将子线程设置为主线程的伴随线程，主线程停止，子线程也停止执行</p>
+</li>
+</ul>
+<p>线程安全问题：</p>
+<p>竞争资源引发的，加锁</p>
+<p>1、同步代码块</p>
+<p>2、同步方法</p>
+<p>3、Lock</p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>项目：</p>
+<p>spring 原理</p>
+<p>spring mvc 原理</p>
+<p><strong>项目名称</strong>：仿<a href>牛客</a>论坛项目</p>
+<p><strong>技术选型</strong>：SpringBoot+MySQL+Redis +Kafka+Elasticsearch</p>
+<p><strong>项目描述</strong>：本项目采用微服务架构的思想，主要涉及模块有权限模块、核心模块、性能模块、通知模块、搜素模块和其他模块。完成了xx模块后台代码的编写，解决了帖子审核、评论、异常等功能的开发，从中学习到了xx技术栈等【这里可以挑选几个自己比较熟悉的模块写上去】</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202206183045971122/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">构造科研创新点的方式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202206152609411500/">
+                        <span class="hidden-mobile">Google Colab 脚本</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","appKey":"TSk3z5eAUFeKIIBzqogbMW4e","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">载入网站运行时间...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>
