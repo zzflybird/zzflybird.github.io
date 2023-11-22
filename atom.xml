@@ -6,7 +6,7 @@
   <link href="https://zzflybird.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://zzflybird.github.io/blog/"/>
-  <updated>2023-04-21T02:24:02.357Z</updated>
+  <updated>2023-11-22T14:26:25.162Z</updated>
   <id>https://zzflybird.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>周记1</title>
+    <link href="https://zzflybird.github.io/blog/20231122800059456/"/>
+    <id>https://zzflybird.github.io/blog/20231122800059456/</id>
+    <published>2023-11-22T14:25:23.000Z</published>
+    <updated>2023-11-22T14:26:25.162Z</updated>
+    
+    <content type="html"><![CDATA[<p>上个周末安排的很满，现在回想起来已经忘记当时做了什么了，但是应该都是大差不差的样子：取平台上买的菜、去菜市场买肉、洗衣服、打扫卫生、理发这些。<br>可能是周末没有休息好，周一上班非非非常累。在想着赶快过去吧。幸好周一不用加班。<br>周一晚上早早入睡，希望能够恢复以往的精力。</p><p>周二加班，晚上9点回来，只想看视频娱乐，完全提不起输入或输出的兴趣。晚11点半就洗漱休息了。</p><hr><p>这两天一直在看郑州的亮亮丽君夫妇的消息，得知他们被打后，决定离开郑州，也是，上有老，下有小，不为自己考虑，也要为家里人考虑。</p><hr><p>看到一篇公众号文章里提到</p><blockquote><p>《应得的权利》一书中说，情绪劳动是“女性为了密切关注生活中的小事所做的免费而无形的工作，这些工作加在一起就成为生活中的大事：情绪劳动是把家庭甚至社会凝聚在一起的黏合剂。情绪劳动包括很多——（出行前）密切关注各种信息、提前计划很多事情。这些工作经常都落在女性身上：知道什么东西在哪里、谁需要什么、杂货清单、家庭预算、家庭活动安排等——更不用说，还要收拾没完没了的包，小到尿布包，大到行李箱。”</p></blockquote><p>我一直有列事项清单的习惯，什么时候需要做什么事情，会设置提醒事项，生怕自己忘记。这个是读研的时候的习惯，因为当时一边上课，一边又要自学科研相关的。<br>现在工作了，自己在外独立生活，吃喝拉撒，什么事情都要操心。今天晚上回来就忘记去取快递了，很多这种明明记得要做，但是事情太多，就忘记了。<br>此外，做饭也需要消耗很多精力，准备食材，平台买菜，菜市场买肉。看b站的一个up，每天早上7点起来准备早饭和午饭，晚上也回家做饭。我是早饭看是否有时间做，有时间就做个手抓饼，没时间就吃个面包，或者到公司楼下买个包子，因为晚上休息的晚，早上7点30左右起。如果晚上要回来做饭，就要把肉先给放到冰箱保险中解冻，就这解冻的步骤，我忘记了好多次，晚上回来只能把肉拿出来当场滑动再切一下，一套晚饭操作下来，刷着视频流吃完饭基本上到了8点左右。</p><p>我还想自我提高一下，看下学习视频，或者写一些文字性技术性的输出，大多是流水账，或者是对于某件事的感触。</p><p>不是还有那句话吗，时间就像海绵里的水，只要愿意挤，总还是有的。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;上个周末安排的很满，现在回想起来已经忘记当时做了什么了，但是应该都是大差不差的样子：取平台上买的菜、去菜市场买肉、洗衣服、打扫卫生、理发这些。&lt;br&gt;可能是周末没有休息好，周一上班非非非常累。在想着赶快过去吧。幸好周一不用加班。&lt;br&gt;周一晚上早早入睡，希望能够恢复以往的精</summary>
+      
+    
+    
+    
+    <category term="周记" scheme="https://zzflybird.github.io/blog/categories/%E5%91%A8%E8%AE%B0/"/>
+    
+    
+    <category term="周记" scheme="https://zzflybird.github.io/blog/tags/%E5%91%A8%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>netty-1</title>
@@ -494,30 +518,6 @@
     <category term="leetcode" scheme="https://zzflybird.github.io/blog/tags/leetcode/"/>
     
     <category term="链表" scheme="https://zzflybird.github.io/blog/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode-23. 合并K个升序链表</title>
-    <link href="https://zzflybird.github.io/blog/202207302660044243/"/>
-    <id>https://zzflybird.github.io/blog/202207302660044243/</id>
-    <published>2022-07-30T14:26:28.000Z</published>
-    <updated>2022-07-30T14:35:55.620Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// c++ 定义结构体，重载()，作为函数使用，使用优先队列实现小根堆</span><br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Cmp</span> &#123;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span> <span class="hljs-params">(ListNode* a, ListNode* b)</span></span><br><span class="hljs-function">        </span>&#123;<br>            <span class="hljs-comment">// 小根堆</span><br>            <span class="hljs-keyword">return</span> a-&gt;val &gt; b-&gt;val;<br>        &#125;<br>    &#125;;<br><br>    <span class="hljs-function">ListNode* <span class="hljs-title">mergeKLists</span><span class="hljs-params">(vector&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;<br>        priority_queue&lt;ListNode*, vector&lt;ListNode*&gt;, Cmp&gt; heap;<br><br>        <span class="hljs-keyword">auto</span> dummy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">auto</span> tail = dummy;<br><br>        <span class="hljs-comment">// 把k个链表的头节点放入小根堆中</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> l : lists)<br>            <span class="hljs-keyword">if</span> (l) heap.<span class="hljs-built_in">push</span>(l);<br>        <br>        <span class="hljs-keyword">while</span> (heap.<span class="hljs-built_in">size</span>())<br>        &#123;<br>            <span class="hljs-comment">// 取堆顶最小节点, 并弹出</span><br>            <span class="hljs-keyword">auto</span> t = heap.<span class="hljs-built_in">top</span>();<br>            heap.<span class="hljs-built_in">pop</span>();<br>            <br>            tail-&gt;next = t;<br>            tail = t;<br><br>            <span class="hljs-comment">// 堆插入代价是 O(logk)</span><br>            <span class="hljs-keyword">if</span> (t-&gt;next) heap.<span class="hljs-built_in">push</span>(t-&gt;next);<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> dummy-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;div class=&quot;code-wrapper&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;</summary>
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/blog/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/blog/tags/leetcode/"/>
     
   </entry>
   
