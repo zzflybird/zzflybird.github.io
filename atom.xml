@@ -3,11 +3,11 @@
   <title>zzflybird</title>
   
   <subtitle>我自踏梯而行</subtitle>
-  <link href="https://zzflybird.github.io/atom.xml" rel="self"/>
+  <link href="https://github.com/zzflybird/blog/atom.xml" rel="self"/>
   
-  <link href="https://zzflybird.github.io/"/>
+  <link href="https://github.com/zzflybird/blog/"/>
   <updated>2023-11-22T14:26:25.162Z</updated>
-  <id>https://zzflybird.github.io/</id>
+  <id>https://github.com/zzflybird/blog/</id>
   
   <author>
     <name>zzflybird</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>周记1</title>
-    <link href="https://zzflybird.github.io/20231122800059456/"/>
-    <id>https://zzflybird.github.io/20231122800059456/</id>
+    <link href="https://github.com/zzflybird/blog/20231122800059456/"/>
+    <id>https://github.com/zzflybird/blog/20231122800059456/</id>
     <published>2023-11-22T14:25:23.000Z</published>
     <updated>2023-11-22T14:26:25.162Z</updated>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="周记" scheme="https://zzflybird.github.io/categories/%E5%91%A8%E8%AE%B0/"/>
+    <category term="周记" scheme="https://github.com/zzflybird/blog/categories/%E5%91%A8%E8%AE%B0/"/>
     
     
-    <category term="周记" scheme="https://zzflybird.github.io/tags/%E5%91%A8%E8%AE%B0/"/>
+    <category term="周记" scheme="https://github.com/zzflybird/blog/tags/%E5%91%A8%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>netty-1</title>
-    <link href="https://zzflybird.github.io/202304093691450081/"/>
-    <id>https://zzflybird.github.io/202304093691450081/</id>
+    <link href="https://github.com/zzflybird/blog/202304093691450081/"/>
+    <id>https://github.com/zzflybird/blog/202304093691450081/</id>
     <published>2023-04-09T09:04:50.000Z</published>
     <updated>2023-04-21T02:24:02.357Z</updated>
     
@@ -59,17 +59,17 @@
     
     
     
-    <category term="Netty" scheme="https://zzflybird.github.io/categories/Netty/"/>
+    <category term="Netty" scheme="https://github.com/zzflybird/blog/categories/Netty/"/>
     
     
-    <category term="Netty" scheme="https://zzflybird.github.io/tags/Netty/"/>
+    <category term="Netty" scheme="https://github.com/zzflybird/blog/tags/Netty/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-31. 下一个排列</title>
-    <link href="https://zzflybird.github.io/202208313370095749/"/>
-    <id>https://zzflybird.github.io/202208313370095749/</id>
+    <link href="https://github.com/zzflybird/blog/202208313370095749/"/>
+    <id>https://github.com/zzflybird/blog/202208313370095749/</id>
     <published>2022-08-31T14:56:58.000Z</published>
     <updated>2022-08-31T15:00:26.380Z</updated>
     
@@ -83,17 +83,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-22. 括号生成</title>
-    <link href="https://zzflybird.github.io/202208301142076060/"/>
-    <id>https://zzflybird.github.io/202208301142076060/</id>
+    <link href="https://github.com/zzflybird/blog/202208301142076060/"/>
+    <id>https://github.com/zzflybird/blog/202208301142076060/</id>
     <published>2022-08-30T14:30:11.000Z</published>
     <updated>2022-08-31T14:59:06.454Z</updated>
     
@@ -107,17 +107,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>美团23秋招笔试后端</title>
-    <link href="https://zzflybird.github.io/20220827589238093/"/>
-    <id>https://zzflybird.github.io/20220827589238093/</id>
+    <link href="https://github.com/zzflybird/blog/20220827589238093/"/>
+    <id>https://github.com/zzflybird/blog/20220827589238093/</id>
     <published>2022-08-27T13:11:59.000Z</published>
     <updated>2022-08-28T03:08:30.513Z</updated>
     
@@ -135,15 +135,15 @@
     
     
     
-    <category term="面经" scheme="https://zzflybird.github.io/categories/%E9%9D%A2%E7%BB%8F/"/>
+    <category term="面经" scheme="https://github.com/zzflybird/blog/categories/%E9%9D%A2%E7%BB%8F/"/>
     
     
   </entry>
   
   <entry>
     <title>大疆测开笔试20220814</title>
-    <link href="https://zzflybird.github.io/202208141197934275/"/>
-    <id>https://zzflybird.github.io/202208141197934275/</id>
+    <link href="https://github.com/zzflybird/blog/202208141197934275/"/>
+    <id>https://github.com/zzflybird/blog/202208141197934275/</id>
     <published>2022-08-14T12:47:24.000Z</published>
     <updated>2022-08-14T14:45:08.673Z</updated>
     
@@ -158,17 +158,17 @@
     
     
     
-    <category term="面经" scheme="https://zzflybird.github.io/categories/%E9%9D%A2%E7%BB%8F/"/>
+    <category term="面经" scheme="https://github.com/zzflybird/blog/categories/%E9%9D%A2%E7%BB%8F/"/>
     
     
-    <category term="面经" scheme="https://zzflybird.github.io/tags/%E9%9D%A2%E7%BB%8F/"/>
+    <category term="面经" scheme="https://github.com/zzflybird/blog/tags/%E9%9D%A2%E7%BB%8F/"/>
     
   </entry>
   
   <entry>
     <title>好未来笔试-Java-20220813</title>
-    <link href="https://zzflybird.github.io/202208132751047154/"/>
-    <id>https://zzflybird.github.io/202208132751047154/</id>
+    <link href="https://github.com/zzflybird/blog/202208132751047154/"/>
+    <id>https://github.com/zzflybird/blog/202208132751047154/</id>
     <published>2022-08-13T12:50:11.000Z</published>
     <updated>2022-08-13T14:17:16.814Z</updated>
     
@@ -188,8 +188,8 @@
   
   <entry>
     <title>计网常见问题记录</title>
-    <link href="https://zzflybird.github.io/202208071957406245/"/>
-    <id>https://zzflybird.github.io/202208071957406245/</id>
+    <link href="https://github.com/zzflybird/blog/202208071957406245/"/>
+    <id>https://github.com/zzflybird/blog/202208071957406245/</id>
     <published>2022-08-07T03:13:35.000Z</published>
     <updated>2022-08-14T03:51:09.857Z</updated>
     
@@ -206,17 +206,17 @@
     
     
     
-    <category term="面经" scheme="https://zzflybird.github.io/categories/%E9%9D%A2%E7%BB%8F/"/>
+    <category term="面经" scheme="https://github.com/zzflybird/blog/categories/%E9%9D%A2%E7%BB%8F/"/>
     
     
-    <category term="计网" scheme="https://zzflybird.github.io/tags/%E8%AE%A1%E7%BD%91/"/>
+    <category term="计网" scheme="https://github.com/zzflybird/blog/tags/%E8%AE%A1%E7%BD%91/"/>
     
   </entry>
   
   <entry>
     <title>Java中的值传递</title>
-    <link href="https://zzflybird.github.io/202208063305694406/"/>
-    <id>https://zzflybird.github.io/202208063305694406/</id>
+    <link href="https://github.com/zzflybird/blog/202208063305694406/"/>
+    <id>https://github.com/zzflybird/blog/202208063305694406/</id>
     <published>2022-08-06T08:13:11.000Z</published>
     <updated>2022-08-07T03:10:49.558Z</updated>
     
@@ -234,17 +234,17 @@
     
     
     
-    <category term="面经" scheme="https://zzflybird.github.io/categories/%E9%9D%A2%E7%BB%8F/"/>
+    <category term="面经" scheme="https://github.com/zzflybird/blog/categories/%E9%9D%A2%E7%BB%8F/"/>
     
     
-    <category term="面经" scheme="https://zzflybird.github.io/tags/%E9%9D%A2%E7%BB%8F/"/>
+    <category term="面经" scheme="https://github.com/zzflybird/blog/tags/%E9%9D%A2%E7%BB%8F/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-200. 岛屿数量</title>
-    <link href="https://zzflybird.github.io/202208021778491728/"/>
-    <id>https://zzflybird.github.io/202208021778491728/</id>
+    <link href="https://github.com/zzflybird/blog/202208021778491728/"/>
+    <id>https://github.com/zzflybird/blog/202208021778491728/</id>
     <published>2022-08-02T14:16:33.000Z</published>
     <updated>2022-08-02T14:18:34.090Z</updated>
     
@@ -261,17 +261,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-20. 有效的括号</title>
-    <link href="https://zzflybird.github.io/202208024026458204/"/>
-    <id>https://zzflybird.github.io/202208024026458204/</id>
+    <link href="https://github.com/zzflybird/blog/202208024026458204/"/>
+    <id>https://github.com/zzflybird/blog/202208024026458204/</id>
     <published>2022-08-02T14:15:44.000Z</published>
     <updated>2022-08-02T14:18:34.087Z</updated>
     
@@ -288,17 +288,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-33. 搜索旋转排序数组</title>
-    <link href="https://zzflybird.github.io/202208013616194023/"/>
-    <id>https://zzflybird.github.io/202208013616194023/</id>
+    <link href="https://github.com/zzflybird/blog/202208013616194023/"/>
+    <id>https://github.com/zzflybird/blog/202208013616194023/</id>
     <published>2022-08-01T14:51:27.000Z</published>
     <updated>2022-08-02T14:18:22.381Z</updated>
     
@@ -315,17 +315,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-103. 二叉树的锯齿形层序遍历</title>
-    <link href="https://zzflybird.github.io/202208012018291730/"/>
-    <id>https://zzflybird.github.io/202208012018291730/</id>
+    <link href="https://github.com/zzflybird/blog/202208012018291730/"/>
+    <id>https://github.com/zzflybird/blog/202208012018291730/</id>
     <published>2022-08-01T14:51:14.000Z</published>
     <updated>2022-08-01T14:54:21.947Z</updated>
     
@@ -341,14 +341,14 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-142. 环形链表 II</title>
-    <link href="https://zzflybird.github.io/202208013254481510/"/>
-    <id>https://zzflybird.github.io/202208013254481510/</id>
+    <link href="https://github.com/zzflybird/blog/202208013254481510/"/>
+    <id>https://github.com/zzflybird/blog/202208013254481510/</id>
     <published>2022-08-01T14:51:02.000Z</published>
     <updated>2022-08-01T14:54:21.951Z</updated>
     
@@ -366,14 +366,14 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-141. 环形链表</title>
-    <link href="https://zzflybird.github.io/202208011400605890/"/>
-    <id>https://zzflybird.github.io/202208011400605890/</id>
+    <link href="https://github.com/zzflybird/blog/202208011400605890/"/>
+    <id>https://github.com/zzflybird/blog/202208011400605890/</id>
     <published>2022-08-01T14:50:49.000Z</published>
     <updated>2022-08-01T14:54:21.949Z</updated>
     
@@ -392,8 +392,8 @@
   
   <entry>
     <title>leetcode-122. 买卖股票的最佳时机 II</title>
-    <link href="https://zzflybird.github.io/202207313064434135/"/>
-    <id>https://zzflybird.github.io/202207313064434135/</id>
+    <link href="https://github.com/zzflybird/blog/202207313064434135/"/>
+    <id>https://github.com/zzflybird/blog/202207313064434135/</id>
     <published>2022-07-31T03:53:56.000Z</published>
     <updated>2022-08-02T14:18:16.365Z</updated>
     
@@ -408,17 +408,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-121. 买卖股票的最佳时机</title>
-    <link href="https://zzflybird.github.io/202207312393907320/"/>
-    <id>https://zzflybird.github.io/202207312393907320/</id>
+    <link href="https://github.com/zzflybird/blog/202207312393907320/"/>
+    <id>https://github.com/zzflybird/blog/202207312393907320/</id>
     <published>2022-07-31T03:50:37.000Z</published>
     <updated>2022-08-02T03:17:54.012Z</updated>
     
@@ -433,17 +433,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-53. 最大子数组和</title>
-    <link href="https://zzflybird.github.io/20220730390932531/"/>
-    <id>https://zzflybird.github.io/20220730390932531/</id>
+    <link href="https://github.com/zzflybird/blog/20220730390932531/"/>
+    <id>https://github.com/zzflybird/blog/20220730390932531/</id>
     <published>2022-07-30T14:30:01.000Z</published>
     <updated>2022-07-30T14:36:52.692Z</updated>
     
@@ -461,17 +461,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-21. 合并两个有序链表</title>
-    <link href="https://zzflybird.github.io/20220730636993472/"/>
-    <id>https://zzflybird.github.io/20220730636993472/</id>
+    <link href="https://github.com/zzflybird/blog/20220730636993472/"/>
+    <id>https://github.com/zzflybird/blog/20220730636993472/</id>
     <published>2022-07-30T14:28:51.000Z</published>
     <updated>2022-07-30T14:36:48.388Z</updated>
     
@@ -488,17 +488,17 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
   </entry>
   
   <entry>
     <title>leetcode-83. 删除排序链表中的重复元素</title>
-    <link href="https://zzflybird.github.io/20220730411341338/"/>
-    <id>https://zzflybird.github.io/20220730411341338/</id>
+    <link href="https://github.com/zzflybird/blog/20220730411341338/"/>
+    <id>https://github.com/zzflybird/blog/20220730411341338/</id>
     <published>2022-07-30T14:27:29.000Z</published>
     <updated>2022-07-30T14:36:40.772Z</updated>
     
@@ -512,12 +512,12 @@
     
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/categories/leetcode/"/>
     
     
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
+    <category term="leetcode" scheme="https://github.com/zzflybird/blog/tags/leetcode/"/>
     
-    <category term="链表" scheme="https://zzflybird.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    <category term="链表" scheme="https://github.com/zzflybird/blog/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   

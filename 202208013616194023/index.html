@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zzflybird/blog/img/favicon.png">
+  <link rel="icon" href="/zzflybird/blog/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="二分：整数二分细节比较多，实数二分比较简单 二段性：找一个性质，第一段满足，第二段不满足，二分出边界点，边界点就是，满足性质的第一段的最后一个数。 两次2分，第一次二分出来数组中的断层的点，第二次在单调序列中二分找tar 注意： 这道题要注意：如果面试官问你再旋转一次怎么做，做法还是一样的，无论旋转几次，最多只有2段递增序列 33的加强版是81题； 这两个题的基础是153和154题。 33-查找旋">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-33. 搜索旋转排序数组">
-<meta property="og:url" content="https://zzflybird.github.io/202208013616194023/index.html">
+<meta property="og:url" content="https://github.com/zzflybird/blog/202208013616194023/index.html">
 <meta property="og:site_name" content="zzflybird">
 <meta property="og:description" content="二分：整数二分细节比较多，实数二分比较简单 二段性：找一个性质，第一段满足，第二段不满足，二分出边界点，边界点就是，满足性质的第一段的最后一个数。 两次2分，第一次二分出来数组中的断层的点，第二次在单调序列中二分找tar 注意： 这道题要注意：如果面试官问你再旋转一次怎么做，做法还是一样的，无论旋转几次，最多只有2段递增序列 33的加强版是81题； 这两个题的基础是153和154题。 33-查找旋">
 <meta property="og:locale" content="zh_CN">
@@ -62,22 +62,22 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/zzflybird/blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/css/test.css">
+<link rel="stylesheet" href="/zzflybird/blog/css/test.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"zzflybird.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/zzflybird/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zzflybird/blog/local-search.xml"};
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="zzflybird" type="application/atom+xml">
+  <script  src="/zzflybird/blog/js/utils.js" ></script>
+  <script  src="/zzflybird/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/zzflybird/blog/atom.xml" title="zzflybird" type="application/atom+xml">
 </head>
 
 
@@ -85,7 +85,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/zzflybird/blog/">
       <strong>zzflybird&#39;s blog</strong>
     </a>
 
@@ -104,7 +104,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/zzflybird/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -116,7 +116,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/zzflybird/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -128,7 +128,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/zzflybird/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -140,7 +140,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/zzflybird/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/zzflybird/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -178,7 +178,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/zzflybird/blog/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -270,7 +270,7 @@
 <li>基础: 153.33. 进阶：154.81.</li>
 </ul>
 <h1 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h1><p>两次二分，第一次二分找到左边区间的最大值；判断target在哪个区间，重新划分区间；第二次二分在新的区间中找target</p>
-<p><img src="https://raw.githubusercontent.com/zzflybird/my-images/master/hexo-blog-img/lc33-2022-08-02_101009.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://raw.githubusercontent.com/zzflybird/my-images/master/hexo-blog-img/lc33-2022-08-02_101009.png" srcset="/zzflybird/blog/img/loading.gif" lazyload></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">search</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <span class="hljs-comment">// 想法1：找到数组中下标i，满足nums[i] &gt; nums[i+1], 然后恢复数组为升序</span><br>        <span class="hljs-comment">// 接着使用二分，找tar</span><br>        <span class="hljs-comment">// y总思路：一般是有序，找一个二段性就可以二分，本题数组中间断开，所以先找断开的点在哪里</span><br>        <span class="hljs-comment">// 然后判断target是在断点的左边区间还是右边区间，再该区间中再次使用二分找到target</span><br>        <br>        <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = nums.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (l &lt; r)<br>        &#123;<br>            <span class="hljs-type">int</span> mid = l + r + <span class="hljs-number">1</span> &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (nums[mid] &gt;= nums[<span class="hljs-number">0</span>]) l = mid;<br>            <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 此时 ，nums[r] 就是 前半部分的最大值</span><br><br>        <span class="hljs-comment">// 接着判断target在哪个部分</span><br>        <span class="hljs-keyword">if</span> (target &gt;= nums[<span class="hljs-number">0</span>]) l = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">else</span> l = r + <span class="hljs-number">1</span>, r = nums.<span class="hljs-built_in">size</span>() <span class="hljs-number">-1</span>;<br><br>        <span class="hljs-comment">// 继续二分，在目标有序区间中找到target</span><br>        <span class="hljs-keyword">while</span> (l &lt; r)<br>        &#123;<br>            <span class="hljs-type">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (nums[mid] &gt;= target) r = mid;<br>            <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 此时的l=r就是target的下标，如果没找到，就是-1</span><br>        <span class="hljs-keyword">if</span> (nums[r] == target) <span class="hljs-keyword">return</span> r;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
             </div>
@@ -281,7 +281,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/zzflybird/blog/categories/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -289,7 +289,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/zzflybird/blog/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -306,7 +306,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202208024026458204/">
+                      <a href="/zzflybird/blog/202208024026458204/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">leetcode-20. 有效的括号</span>
                         <span class="visible-mobile">上一篇</span>
@@ -316,7 +316,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/202208012018291730/">
+                      <a href="/zzflybird/blog/202208012018291730/">
                         <span class="hidden-mobile">leetcode-103. 二叉树的锯齿形层序遍历</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -464,18 +464,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/zzflybird/blog/js/events.js" ></script>
+<script  src="/zzflybird/blog/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/zzflybird/blog/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/zzflybird/blog/js/img-lazyload.js" ></script>
   
 
 
@@ -500,7 +500,7 @@
 
 
 
-  <script defer src="/js/leancloud.js" ></script>
+  <script defer src="/zzflybird/blog/js/leancloud.js" ></script>
 
 
 
@@ -585,7 +585,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
+<script  src="/zzflybird/blog/js/boot.js" ></script>
 
 
 </body>

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zzflybird/blog/img/favicon.png">
+  <link rel="icon" href="/zzflybird/blog/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,19 +19,19 @@
     <meta name="description" content="Spring源码1-3 SpringMVC源码4 第1节Spring概念和使用注解方式管理Bean： 1、注解方式 创建对象IOC 导入依赖 aop 123456@Component    放在类上,用于标记,告诉spring当前类需要由容器实例化bean并放入容器中该注解有三个子注解@Controller   用于实例化controller层bean@Service        用于实例化se">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring笔记">
-<meta property="og:url" content="https://zzflybird.github.io/202205202545824373/index.html">
+<meta property="og:url" content="https://github.com/zzflybird/blog/202205202545824373/index.html">
 <meta property="og:site_name" content="zzflybird">
 <meta property="og:description" content="Spring源码1-3 SpringMVC源码4 第1节Spring概念和使用注解方式管理Bean： 1、注解方式 创建对象IOC 导入依赖 aop 123456@Component    放在类上,用于标记,告诉spring当前类需要由容器实例化bean并放入容器中该注解有三个子注解@Controller   用于实例化controller层bean@Service        用于实例化se">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png">
-<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215633666.png">
-<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215812470.png">
-<meta property="og:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220527224307025.png">
+<meta property="og:image" content="https://github.com/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png">
+<meta property="og:image" content="https://github.com/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220521215633666.png">
+<meta property="og:image" content="https://github.com/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220521215812470.png">
+<meta property="og:image" content="https://github.com/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220527224307025.png">
 <meta property="article:published_time" content="2022-05-20T12:39:39.000Z">
 <meta property="article:modified_time" content="2022-06-11T05:31:56.000Z">
 <meta property="article:author" content="zzflybird">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zzflybird.github.io/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png">
+<meta name="twitter:image" content="https://github.com/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png">
   
   
   <title>Spring笔记 - zzflybird</title>
@@ -64,22 +64,22 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/zzflybird/blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/css/test.css">
+<link rel="stylesheet" href="/zzflybird/blog/css/test.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"zzflybird.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/zzflybird/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zzflybird/blog/local-search.xml"};
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="zzflybird" type="application/atom+xml">
+  <script  src="/zzflybird/blog/js/utils.js" ></script>
+  <script  src="/zzflybird/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/zzflybird/blog/atom.xml" title="zzflybird" type="application/atom+xml">
 </head>
 
 
@@ -87,7 +87,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/zzflybird/blog/">
       <strong>zzflybird&#39;s blog</strong>
     </a>
 
@@ -106,7 +106,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/zzflybird/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -118,7 +118,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/zzflybird/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -130,7 +130,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/zzflybird/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -142,7 +142,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/zzflybird/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -154,7 +154,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/zzflybird/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -180,7 +180,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/zzflybird/blog/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -306,7 +306,7 @@
 <li>不仅可增强接口中定义的方法，还可以增强一个类其他的方法</li>
 <li>可以读取父类中方法上的所有注解</li>
 </ol>
-<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png" srcset="/img/loading.gif" lazyload alt="image-20220521160949458"></p>
+<p><img src="/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220521160949458.png" srcset="/zzflybird/blog/img/loading.gif" lazyload alt="image-20220521160949458"></p>
 <h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p><strong>AOP切面编程一般可以帮助我们在不修改现有代码的情况下,对程序的功能进行拓展,往往用于实现 日志处理,权限控制,性能检测,事务控制等<br>AOP实现的原理就是动态代理，在有接口的情况下,使用JDK动态代理,在没有接口的情况下使用cglib动态代理</strong></p>
 <p><strong>AOP中的术语辨析</strong></p>
 <p>1 连接点 Joint point:<br>类里面那些可以被增强的方法,这些方法称之为连接点<br>表示在程序中明确定义的点，典型的包括方法调用，对类成员的访问以及异常处理程序块的执行等等，它自身还可以嵌套其它 joint point</p>
@@ -335,9 +335,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserServiceProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UserService</span><br>&#123;<br>    UserService target;<span class="hljs-comment">// 普通对象，进行过依赖注入的，其属性是有值的</span><br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-comment">// 先执行@Before修饰的方法，执行切面逻辑</span><br>        target.test();<span class="hljs-comment">// 普通对象.test()</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>而代理对象里面的orderService (empDao)对象是没有赋值的，是null的。</p>
-<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215633666.png" srcset="/img/loading.gif" lazyload alt="image-20220521215633666"></p>
+<p><img src="/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220521215633666.png" srcset="/zzflybird/blog/img/loading.gif" lazyload alt="image-20220521215633666"></p>
 <p>普通对象是进行了依赖注入的，它的属性是有值的。</p>
-<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220521215812470.png" srcset="/img/loading.gif" lazyload alt="image-20220521215812470"></p>
+<p><img src="/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220521215812470.png" srcset="/zzflybird/blog/img/loading.gif" lazyload alt="image-20220521215812470"></p>
 <p>Spring生成Bean的过程：UserService.class—&gt;无参构造方法（推断构造方法）—》<strong>普通对象</strong>—》<strong>依赖注入（属性赋值）</strong>—》初始化前（@PostConstruct）—–》初始化（InitializingBean）—》初始化后（AOP）—》代理对象—-》Bean</p>
 <p>在<strong>初始化后（AOP）</strong>这一步，判断UserService要不要进行AOP，根据UserService中的方法是否被切了来判断。那么如何判断UserService中的有没有方法被切了呢？</p>
 <p>1、找出所有的切面Bean</p>
@@ -414,7 +414,7 @@
 <p>声明式定义Bean；声明式有：@Component、@Bean、xml声明Bean。spring底层会为这些Bean自动创建BeanDefinition对象，然后去读取Bean的各种信息和属性放入BeanDefinition对象中。</p>
 <p>编程式定义Bean；</p>
 <p>1、Spring的底层要使用编程式的方法创建BeanDefinition对象。如下图方框中的代码，在源码中很多使用这种方式创建BeanDefinition的。</p>
-<p><img src="/blog/.io//Spring%E7%AC%94%E8%AE%B0/image-20220527224307025.png" srcset="/img/loading.gif" lazyload alt="image-20220527224307025"></p>
+<p><img src="/zzflybird/blog/.com//blog/Spring%E7%AC%94%E8%AE%B0/image-20220527224307025.png" srcset="/zzflybird/blog/img/loading.gif" lazyload alt="image-20220527224307025"></p>
 <p>注册Bean的：</p>
 <p>AnotatedBeanDefinitionReader，传Bean.class</p>
 <p>XmlBeanDefinitionReader，传sping.xml</p>
@@ -469,7 +469,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202205263846569680/">
+                      <a href="/zzflybird/blog/202205263846569680/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">SpringMVC笔记</span>
                         <span class="visible-mobile">上一篇</span>
@@ -479,7 +479,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/20220517433679196/">
+                      <a href="/zzflybird/blog/20220517433679196/">
                         <span class="hidden-mobile">git报错：fatal: unable to access 'https://github.com/xxxxxx/xxxxxx.github.io.git/': OpenSSL SSL_read: Connection was reset, errno 10054</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -627,18 +627,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/zzflybird/blog/js/events.js" ></script>
+<script  src="/zzflybird/blog/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/zzflybird/blog/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/zzflybird/blog/js/img-lazyload.js" ></script>
   
 
 
@@ -663,7 +663,7 @@
 
 
 
-  <script defer src="/js/leancloud.js" ></script>
+  <script defer src="/zzflybird/blog/js/leancloud.js" ></script>
 
 
 
@@ -748,7 +748,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
+<script  src="/zzflybird/blog/js/boot.js" ></script>
 
 
 </body>
