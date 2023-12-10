@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/zzflybird/blog/img/favicon.png">
-  <link rel="icon" href="/zzflybird/blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="一个格斗场内有 n 个战士，其中第 i 个战士的战斗力为 ai。  一个长度为n的数组，第i个数的值为ai  作为格斗场内的经理人，你需要给战士们安排一对一的决斗。  从该数组中挑2个数出来；  这些决斗是一场接一场进行的，一场结束后才会安排下一场。  要保证先从数组中挑2个数出来，处理完了这2个数，才能继续挑下一个“2个数”；  为了保证决斗的观赏性，在安排时需保证：1 决斗双方的战斗力不能相同">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AcWing 4483. 格斗场">
-<meta property="og:url" content="https://github.com/zzflybird/blog/202206183836283619/index.html">
+<meta property="og:url" content="https://zzflybird.github.io/blog/202206183836283619/index.html">
 <meta property="og:site_name" content="zzflybird">
 <meta property="og:description" content="一个格斗场内有 n 个战士，其中第 i 个战士的战斗力为 ai。  一个长度为n的数组，第i个数的值为ai  作为格斗场内的经理人，你需要给战士们安排一对一的决斗。  从该数组中挑2个数出来；  这些决斗是一场接一场进行的，一场结束后才会安排下一场。  要保证先从数组中挑2个数出来，处理完了这2个数，才能继续挑下一个“2个数”；  为了保证决斗的观赏性，在安排时需保证：1 决斗双方的战斗力不能相同">
 <meta property="og:locale" content="zh_CN">
@@ -60,22 +60,22 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/zzflybird/blog/css/main.css" />
+<link  rel="stylesheet" href="/blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/zzflybird/blog/css/test.css">
+<link rel="stylesheet" href="/blog/css/test.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"github.com","root":"/zzflybird/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zzflybird/blog/local-search.xml"};
+    var CONFIG = {"hostname":"zzflybird.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"T4d1rOuPBNRQqUPGhMSvGNTR-gzGzoHsz","app_key":"TSk3z5eAUFeKIIBzqogbMW4e","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
   </script>
-  <script  src="/zzflybird/blog/js/utils.js" ></script>
-  <script  src="/zzflybird/blog/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/zzflybird/blog/atom.xml" title="zzflybird" type="application/atom+xml">
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/blog/atom.xml" title="zzflybird" type="application/atom+xml">
 </head>
 
 
@@ -83,7 +83,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/zzflybird/blog/">
+    <a class="navbar-brand" href="/blog/">
       <strong>zzflybird&#39;s blog</strong>
     </a>
 
@@ -102,7 +102,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zzflybird/blog/">
+              <a class="nav-link" href="/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -114,7 +114,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zzflybird/blog/archives/">
+              <a class="nav-link" href="/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -126,7 +126,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zzflybird/blog/categories/">
+              <a class="nav-link" href="/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -138,7 +138,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zzflybird/blog/tags/">
+              <a class="nav-link" href="/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -150,7 +150,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zzflybird/blog/about/">
+              <a class="nav-link" href="/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/zzflybird/blog/img/default.png') no-repeat center center;
+         style="background: url('/blog/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -302,7 +302,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/zzflybird/blog/tags/Acwing/">Acwing</a>
+                      <a class="hover-with-bg" href="/blog/tags/Acwing/">Acwing</a>
                     
                   </div>
                 
@@ -319,7 +319,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/zzflybird/blog/202206182942941267/">
+                      <a href="/blog/202206182942941267/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">AcWing 4482. 分组</span>
                         <span class="visible-mobile">上一篇</span>
@@ -329,7 +329,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/zzflybird/blog/202206183045971122/">
+                      <a href="/blog/202206183045971122/">
                         <span class="hidden-mobile">构造科研创新点的方式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -477,18 +477,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/zzflybird/blog/js/events.js" ></script>
-<script  src="/zzflybird/blog/js/plugins.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/zzflybird/blog/js/local-search.js" ></script>
+  <script  src="/blog/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/zzflybird/blog/js/img-lazyload.js" ></script>
+    <script  src="/blog/js/img-lazyload.js" ></script>
   
 
 
@@ -513,7 +513,7 @@
 
 
 
-  <script defer src="/zzflybird/blog/js/leancloud.js" ></script>
+  <script defer src="/blog/js/leancloud.js" ></script>
 
 
 
@@ -598,7 +598,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/zzflybird/blog/js/boot.js" ></script>
+<script  src="/blog/js/boot.js" ></script>
 
 
 </body>
