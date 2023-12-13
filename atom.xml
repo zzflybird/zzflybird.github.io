@@ -6,7 +6,7 @@
   <link href="https://zzflybird.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://zzflybird.github.io/blog/"/>
-  <updated>2023-11-22T14:26:25.162Z</updated>
+  <updated>2023-12-13T14:33:04.171Z</updated>
   <id>https://zzflybird.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于netstat命令</title>
+    <link href="https://zzflybird.github.io/blog/20231213285109806/"/>
+    <id>https://zzflybird.github.io/blog/20231213285109806/</id>
+    <published>2023-12-13T14:00:51.000Z</published>
+    <updated>2023-12-13T14:33:04.171Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在工作中，在CentOS系统中会使用<code>netstat -antp</code>这个命令查看网络情况和端口监听情况，但是也是看同事输入这个命令后，看了一眼，就知道了问题所在，我也想能到这个程度，不过可能需要10年的努力和沉淀，慢慢来。</p><h1 id="netstat命令参数"><a href="#netstat命令参数" class="headerlink" title="netstat命令参数"></a>netstat命令参数</h1><p>常用的命令是 <code>netstat -antp | grep 端口号</code> ，配合管道命令可以查询目标端口是否开放。</p><ul><li>其中，a表示显示所有连接和监听的端口，a是all的首字母。</li><li>n表示显示IP，n是numeric的首字母，以数字形式显示地址和端口号。不带n时，会进行DNS轮询，需要等待一段时间，带n可以加速操作。</li><li>t表示显示TCP端口，t是TCP的首字母。</li><li>p表示显示进程标识符和程序名称，每一个套接字和端口都属于一个程序，p是program的首字母。</li><li>l表示仅显示监听套接字的，l是listening的首字母。</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在工作中，在CentOS系统中会使用&lt;code&gt;netstat -antp&lt;/code&gt;这个命令查看网络情况和端口监听情况，但是也是看同事输</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="https://zzflybird.github.io/blog/categories/Linux/"/>
+    
+    
+    <category term="Linux命令" scheme="https://zzflybird.github.io/blog/tags/Linux%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>周记1</title>
@@ -492,32 +516,6 @@
     
     
     <category term="leetcode" scheme="https://zzflybird.github.io/blog/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode-83. 删除排序链表中的重复元素</title>
-    <link href="https://zzflybird.github.io/blog/20220730411341338/"/>
-    <id>https://zzflybird.github.io/blog/20220730411341338/</id>
-    <published>2022-07-30T14:27:29.000Z</published>
-    <updated>2022-07-30T14:36:40.772Z</updated>
-    
-    <content type="html"><![CDATA[<p>指定 cur 指针指向头部 head<br>当 cur 和 cur.next 的存在为循环结束条件，当二者有一个不存在时说明链表没有去重复的必要了<br>当 cur.val 和 cur.next.val 相等时说明需要去重，则将 cur 的下一个指针指向下一个的下一个，这样就能达到去重复的效果<br>如果不相等则 cur 移动到下一个位置继续循环<br>时间复杂度：O(n)</p><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">deleteDuplicates</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* dummy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>        dummy-&gt;next = head;<br>        <br>        ListNode* cur = head;<br><br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">NULL</span> &amp;&amp; cur-&gt;next != <span class="hljs-literal">NULL</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (cur-&gt;val == cur-&gt;next-&gt;val) <br>                cur-&gt;next = cur-&gt;next-&gt;next;<br>            <span class="hljs-keyword">else</span> cur = cur-&gt;next;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> dummy-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;指定 cur 指针指向头部 head&lt;br&gt;当 cur 和 cur.next 的存在为循环结束条件，当二者有一个不存在时说明链表没有去重复的必要了&lt;br&gt;当 cur.val 和 cur.next.val 相等时说明需要去重，则将 cur 的下一个指针指向下一个的下一个，这样</summary>
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/blog/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/blog/tags/leetcode/"/>
-    
-    <category term="链表" scheme="https://zzflybird.github.io/blog/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   

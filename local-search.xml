@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>关于netstat命令</title>
+    <link href="/blog/20231213285109806/"/>
+    <url>/blog/20231213285109806/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在工作中，在CentOS系统中会使用<code>netstat -antp</code>这个命令查看网络情况和端口监听情况，但是也是看同事输入这个命令后，看了一眼，就知道了问题所在，我也想能到这个程度，不过可能需要10年的努力和沉淀，慢慢来。</p><h1 id="netstat命令参数"><a href="#netstat命令参数" class="headerlink" title="netstat命令参数"></a>netstat命令参数</h1><p>常用的命令是 <code>netstat -antp | grep 端口号</code> ，配合管道命令可以查询目标端口是否开放。</p><ul><li>其中，a表示显示所有连接和监听的端口，a是all的首字母。</li><li>n表示显示IP，n是numeric的首字母，以数字形式显示地址和端口号。不带n时，会进行DNS轮询，需要等待一段时间，带n可以加速操作。</li><li>t表示显示TCP端口，t是TCP的首字母。</li><li>p表示显示进程标识符和程序名称，每一个套接字和端口都属于一个程序，p是program的首字母。</li><li>l表示仅显示监听套接字的，l是listening的首字母。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux命令</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>周记1</title>
     <link href="/blog/20231122800059456/"/>
     <url>/blog/20231122800059456/</url>
