@@ -6,7 +6,7 @@
   <link href="https://zzflybird.github.io/atom.xml" rel="self"/>
   
   <link href="https://zzflybird.github.io/"/>
-  <updated>2023-12-13T14:33:14.677Z</updated>
+  <updated>2023-12-23T10:14:30.488Z</updated>
   <id>https://zzflybird.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu系统GPU掉显卡驱动问题记录</title>
+    <link href="https://zzflybird.github.io/202312232732646525/"/>
+    <id>https://zzflybird.github.io/202312232732646525/</id>
+    <published>2023-12-23T10:06:12.000Z</published>
+    <updated>2023-12-23T10:14:30.488Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于故障导致服务器显卡驱动掉了，尝试了各种方法都没有解决，记录下最终解决的方法。</p><h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><p>执行命令 nvidia-smi，报错：NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA<br>driver. Make sure that the latest NVIDIA driver is installed and running.</p><h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>内核版本原因，内核版本的头文件不匹配。</p><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>uname -r 查看内核版本<br>sudo apt-get install –reinstall linux-headers-generic<br>sudo apt-get install –reinstall linux-headers-$(uname -r)<br>sudo apt-get install –reinstall build-essential</p><p>再次 modprobe nvidia</p><p>安装 NVIDIA*.run</p><p>执行nvidia-sm</p><p>参考：<br><a href="https://mcqueen-zero.blog.csdn.net/article/details/124203989?spm=1001.2014.3001.5502">https://mcqueen-zero.blog.csdn.net/article/details/124203989?spm=1001.2014.3001.5502</a><br><a href="https://spacevision.blog.csdn.net/article/details/123510743">https://spacevision.blog.csdn.net/article/details/123510743</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;由于故障导致服务器显卡驱动掉了，尝试了各种方法都没有解决，记录下最终解决的方法。&lt;/p&gt;
+&lt;h1 id=&quot;报错&quot;&gt;&lt;a href=&quot;#报错&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>记录一次部署服务报错排查</title>
+    <link href="https://zzflybird.github.io/202312151076906245/"/>
+    <id>https://zzflybird.github.io/202312151076906245/</id>
+    <published>2023-12-15T12:30:04.000Z</published>
+    <updated>2023-12-23T10:14:30.490Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在本地环境部署服务后，登录界面验证码显示不出来，看后台日志是一个关于字体包的错误。</p><h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><p>报错如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs log">java.lang.NullPointerException<br>        at sun.awt.FontConfiguration.getVersion(FontConfiguration.java:1264)<br>        at sun.awt.FontConfiguration.readFontConfigFile(FontConfiguration.java:219)<br>        at sun.awt.FontConfiguration.init(FontConfiguration.java:107)<br>        at sun.awt.X11FontManager.createFontConfiguration(X11FontManager.java:776)<br></code></pre></td></tr></table></figure><h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>查到原因是CentOS系统缺少字体包。<br>执行 yum provides *&#x2F;dejavu 命令查找字体包，执行 yum -y install fontconfig 命令安装字体包。<br>还要执行命令安装查找到的对应的字体包。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install dejavu-sans-fonts-2.33-6.el7.noarch<br>yum -y install dejavu-sans-mono-fonts-2.33-6.el7.noarch<br>yum -y install dejavu-serif-fonts-2.33-6.el7.noarch<br></code></pre></td></tr></table></figure><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>没有字体包的原因是，安装CentOS系统时，选择了最小化安装，于是就没有字体包，但是项目的验证码需要字体包，就报错了。看错误日志是排查错误的好办法。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在本地环境部署服务后，登录界面验证码显示不出来，看后台日志是一个关于字体包的错误。&lt;/p&gt;
+&lt;h1 id=&quot;报错&quot;&gt;&lt;a href=&quot;#报错</summary>
+      
+    
+    
+    
+    <category term="报错排查" scheme="https://zzflybird.github.io/categories/%E6%8A%A5%E9%94%99%E6%8E%92%E6%9F%A5/"/>
+    
+    
+    <category term="bug" scheme="https://zzflybird.github.io/tags/bug/"/>
+    
+  </entry>
   
   <entry>
     <title>关于netstat命令</title>
@@ -453,61 +499,6 @@
       
     <summary type="html">&lt;p&gt;前一天买入，未来一个不同的日子才能卖出&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;不能多次交易，只能买—》卖一次&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zzflybird/my-images/master/hex</summary>
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode-53. 最大子数组和</title>
-    <link href="https://zzflybird.github.io/20220730390932531/"/>
-    <id>https://zzflybird.github.io/20220730390932531/</id>
-    <published>2022-07-30T14:30:01.000Z</published>
-    <updated>2022-07-30T14:36:52.692Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h2><ul><li>时间复杂度：O(n)</li><li>空间复杂度：O(n)</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-comment">// 子数组是连续的部分</span><br>        <span class="hljs-comment">// dp问题</span><br>        <span class="hljs-comment">// dp[i]:表示数组nums[0,i]的最大连续子数组的和为dp[i]</span><br>        <span class="hljs-comment">// dp[0] = nums[0]</span><br><br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(nums.size())</span></span>;<br><br>        dp[<span class="hljs-number">0</span>] = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> res = dp[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            dp[i] = <span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>]+nums[i], nums[i]);<br>            <span class="hljs-keyword">if</span> (dp[i] &gt; res) res = dp[i];<span class="hljs-comment">// 保存连续子数组最大和</span><br>        &#125;<br><br>        <span class="hljs-keyword">return</span> res;   <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p><img src="https://raw.githubusercontent.com/zzflybird/my-images/master/hexo-blog-img/Untitled.png"></p><h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-comment">// 贪心思路：遍历求和，如果和小于0，这和不要也罢，直接从下一个元素开始累加和</span><br><br>        <span class="hljs-type">int</span> res = INT32_MIN;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// [-1]</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            sum += nums[i];<br>            <span class="hljs-comment">// 先使用sum更新res，否则先判断sum&lt;0的话会把sum的值变为0，就丢失了原来的值了。</span><br>            <span class="hljs-keyword">if</span> (sum &gt; res) res = sum;<span class="hljs-comment">// 先更新res</span><br>            <span class="hljs-keyword">if</span> (sum &lt; <span class="hljs-number">0</span>) sum = <span class="hljs-number">0</span>; <span class="hljs-comment">// 再把小于0的sum变为0</span><br>        &#125;<br><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;dp&quot;&gt;&lt;a href=&quot;#dp&quot; class=&quot;headerlink&quot; title=&quot;dp&quot;&gt;&lt;/a&gt;dp&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;时间复杂度：O(n)&lt;/li&gt;
-&lt;li&gt;空间复杂度：O(n)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlig</summary>
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode-21. 合并两个有序链表</title>
-    <link href="https://zzflybird.github.io/20220730636993472/"/>
-    <id>https://zzflybird.github.io/20220730636993472/</id>
-    <published>2022-07-30T14:28:51.000Z</published>
-    <updated>2022-07-30T14:36:48.388Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>迭代和递归写法</li><li>面试时会考虑去重，迭代去重在比较前判断pre和l1和l2的大小，决定是否要跳过该节点</li><li>变形：<strong>合并多个有序列表</strong>：<strong>合并多个有序链表的实现思路，分析时间复杂度和空间复杂度</strong>。方法：以合并两个链表的思路为基础，使用归并自底向上合并。还有小顶堆，也就是优先队列。</li></ul><h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode* list1, ListNode* list2)</span> </span>&#123;<br>        <br>        ListNode* dummy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">-1000</span>); <span class="hljs-comment">// 虚拟节点，为了返回列表方便</span><br><br>        ListNode* pre = dummy; <span class="hljs-comment">// 操作指针</span><br><br>        <span class="hljs-keyword">while</span> (list1 != <span class="hljs-literal">NULL</span> &amp;&amp; list2 != <span class="hljs-literal">NULL</span>)<br>        &#123;<br>            <span class="hljs-comment">// 如果需要去重的话，先比较pre-&gt;val 和 list1, list2的val</span><br>            <span class="hljs-comment">// if (pre-&gt;val == list1-&gt;val) list1 = list1-&gt;next;</span><br>            <span class="hljs-comment">// if (pre-&gt;val == list2-&gt;val) list2 = list2-&gt;next;</span><br><br>            <span class="hljs-keyword">if</span> (list1-&gt;val &lt;= list2-&gt;val) <br>            &#123;<br>                pre-&gt;next = list1;<br>                list1 = list1-&gt;next;<br>                pre = pre-&gt;next;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <br>            &#123;<br>                pre-&gt;next = list2;<br>                list2 = list2-&gt;next;<br>                pre = pre-&gt;next;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">// 最终有一个链表没有遍历完，就接在pre的后面.</span><br>        <span class="hljs-keyword">if</span> (list1 == <span class="hljs-literal">NULL</span>) pre-&gt;next = list2;<br>        <span class="hljs-keyword">else</span> pre-&gt;next = list1;<br><br>        <span class="hljs-keyword">return</span> dummy-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;<br>        <span class="hljs-comment">// 终止条件</span><br>        <span class="hljs-keyword">if</span> (l1 == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> l2;<br>        <span class="hljs-keyword">if</span> (l2 == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> l1;<br><br>        <span class="hljs-keyword">if</span> (l1-&gt;val &lt;= l2-&gt;val) <br>        &#123;<br>            l1-&gt;next = <span class="hljs-built_in">mergeTwoLists</span>(l1-&gt;next, l2);<br>            <span class="hljs-keyword">return</span> l1;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <br>        &#123;<br>            l2-&gt;next = <span class="hljs-built_in">mergeTwoLists</span>(l1, l2-&gt;next);<br>            <span class="hljs-keyword">return</span> l2;<br>        &#125;<br><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;迭代和递归写法&lt;/li&gt;
-&lt;li&gt;面试时会考虑去重，迭代去重在比较前判断pre和l1和l2的大小，决定是否要跳过该节点&lt;/li&gt;
-&lt;li&gt;变形：&lt;strong&gt;合并多个有序列表&lt;/strong&gt;：&lt;strong&gt;合并多个有序链表的实现思路，分析时间复杂度和空间复</summary>
       
     
     

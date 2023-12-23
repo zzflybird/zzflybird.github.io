@@ -16,21 +16,21 @@
   <meta name="author" content="zzflybird">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言在工作中，在CentOS系统中会使用netstat -antp这个命令查看网络情况和端口监听情况，但是也是看同事输入这个命令后，看了一眼，就知道了问题所在，我也想能到这个程度，不过可能需要10年的努力和沉淀，慢慢来。 netstat命令参数常用的命令是 netstat -antp | grep 端口号 ，配合管道命令可以查询目标端口是否开放。  其中，a表示显示所有连接和监听的端口，a是all">
+    <meta name="description" content="前言在本地环境部署服务后，登录界面验证码显示不出来，看后台日志是一个关于字体包的错误。 报错报错如下： 12345java.lang.NullPointerException        at sun.awt.FontConfiguration.getVersion(FontConfiguration.java:1264)        at sun.awt.FontConfiguration.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于netstat命令">
-<meta property="og:url" content="https://zzflybird.github.io/20231213285109806/index.html">
+<meta property="og:title" content="记录一次部署服务报错排查">
+<meta property="og:url" content="https://zzflybird.github.io/202312151076906245/index.html">
 <meta property="og:site_name" content="zzflybird">
-<meta property="og:description" content="前言在工作中，在CentOS系统中会使用netstat -antp这个命令查看网络情况和端口监听情况，但是也是看同事输入这个命令后，看了一眼，就知道了问题所在，我也想能到这个程度，不过可能需要10年的努力和沉淀，慢慢来。 netstat命令参数常用的命令是 netstat -antp | grep 端口号 ，配合管道命令可以查询目标端口是否开放。  其中，a表示显示所有连接和监听的端口，a是all">
+<meta property="og:description" content="前言在本地环境部署服务后，登录界面验证码显示不出来，看后台日志是一个关于字体包的错误。 报错报错如下： 12345java.lang.NullPointerException        at sun.awt.FontConfiguration.getVersion(FontConfiguration.java:1264)        at sun.awt.FontConfiguration.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-13T14:00:51.000Z">
-<meta property="article:modified_time" content="2023-12-13T14:33:14.677Z">
+<meta property="article:published_time" content="2023-12-15T12:30:04.000Z">
+<meta property="article:modified_time" content="2023-12-23T10:14:30.490Z">
 <meta property="article:author" content="zzflybird">
-<meta property="article:tag" content="Linux命令">
+<meta property="article:tag" content="bug">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>关于netstat命令 - zzflybird</title>
+  <title>记录一次部署服务报错排查 - zzflybird</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -181,7 +181,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="关于netstat命令">
+            <span class="h2" id="subtitle" title="记录一次部署服务报错排查">
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-12-13 22:00" pubdate>
-        2023年12月13日 晚上
+      <time datetime="2023-12-15 20:30" pubdate>
+        2023年12月15日 晚上
       </time>
     </span>
   
@@ -202,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      360 字
+      693 字
     </span>
   
 
@@ -211,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4 分钟
+      6 分钟
     </span>
   
 
@@ -248,24 +248,21 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">关于netstat命令</h1>
+            <h1 style="display: none">记录一次部署服务报错排查</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月13日 晚上
+                  本文最后更新于：2023年12月23日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在工作中，在CentOS系统中会使用<code>netstat -antp</code>这个命令查看网络情况和端口监听情况，但是也是看同事输入这个命令后，看了一眼，就知道了问题所在，我也想能到这个程度，不过可能需要10年的努力和沉淀，慢慢来。</p>
-<h1 id="netstat命令参数"><a href="#netstat命令参数" class="headerlink" title="netstat命令参数"></a>netstat命令参数</h1><p>常用的命令是 <code>netstat -antp | grep 端口号</code> ，配合管道命令可以查询目标端口是否开放。</p>
-<ul>
-<li>其中，a表示显示所有连接和监听的端口，a是all的首字母。</li>
-<li>n表示显示IP，n是numeric的首字母，以数字形式显示地址和端口号。不带n时，会进行DNS轮询，需要等待一段时间，带n可以加速操作。</li>
-<li>t表示显示TCP端口，t是TCP的首字母。</li>
-<li>p表示显示进程标识符和程序名称，每一个套接字和端口都属于一个程序，p是program的首字母。</li>
-<li>l表示仅显示监听套接字的，l是listening的首字母。</li>
-</ul>
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在本地环境部署服务后，登录界面验证码显示不出来，看后台日志是一个关于字体包的错误。</p>
+<h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><p>报错如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs log">java.lang.NullPointerException<br>        at sun.awt.FontConfiguration.getVersion(FontConfiguration.java:1264)<br>        at sun.awt.FontConfiguration.readFontConfigFile(FontConfiguration.java:219)<br>        at sun.awt.FontConfiguration.init(FontConfiguration.java:107)<br>        at sun.awt.X11FontManager.createFontConfiguration(X11FontManager.java:776)<br></code></pre></td></tr></table></figure>
+<h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>查到原因是CentOS系统缺少字体包。<br>执行 yum provides *&#x2F;dejavu 命令查找字体包，执行 yum -y install fontconfig 命令安装字体包。<br>还要执行命令安装查找到的对应的字体包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install dejavu-sans-fonts-2.33-6.el7.noarch<br>yum -y install dejavu-sans-mono-fonts-2.33-6.el7.noarch<br>yum -y install dejavu-serif-fonts-2.33-6.el7.noarch<br></code></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>没有字体包的原因是，安装CentOS系统时，选择了最小化安装，于是就没有字体包，但是项目的验证码需要字体包，就报错了。看错误日志是排查错误的好办法。</p>
 
             </div>
             <hr>
@@ -275,7 +272,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%A5%E9%94%99%E6%8E%92%E6%9F%A5/">报错排查</a>
                     
                   </div>
                 
@@ -283,7 +280,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Linux%E5%91%BD%E4%BB%A4/">Linux命令</a>
+                      <a class="hover-with-bg" href="/tags/bug/">bug</a>
                     
                   </div>
                 
@@ -300,9 +297,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202312151076906245/">
+                      <a href="/202312232732646525/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">记录一次部署服务报错排查</span>
+                        <span class="hidden-mobile">Ubuntu系统GPU掉显卡驱动问题记录</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -310,8 +307,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/20231122800059456/">
-                        <span class="hidden-mobile">周记1</span>
+                      <a href="/20231213285109806/">
+                        <span class="hidden-mobile">关于netstat命令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

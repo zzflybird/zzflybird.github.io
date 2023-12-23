@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>Ubuntu系统GPU掉显卡驱动问题记录</title>
+    <link href="/202312232732646525/"/>
+    <url>/202312232732646525/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于故障导致服务器显卡驱动掉了，尝试了各种方法都没有解决，记录下最终解决的方法。</p><h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><p>执行命令 nvidia-smi，报错：NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA<br>driver. Make sure that the latest NVIDIA driver is installed and running.</p><h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>内核版本原因，内核版本的头文件不匹配。</p><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>uname -r 查看内核版本<br>sudo apt-get install –reinstall linux-headers-generic<br>sudo apt-get install –reinstall linux-headers-$(uname -r)<br>sudo apt-get install –reinstall build-essential</p><p>再次 modprobe nvidia</p><p>安装 NVIDIA*.run</p><p>执行nvidia-sm</p><p>参考：<br><a href="https://mcqueen-zero.blog.csdn.net/article/details/124203989?spm=1001.2014.3001.5502">https://mcqueen-zero.blog.csdn.net/article/details/124203989?spm=1001.2014.3001.5502</a><br><a href="https://spacevision.blog.csdn.net/article/details/123510743">https://spacevision.blog.csdn.net/article/details/123510743</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>记录一次部署服务报错排查</title>
+    <link href="/202312151076906245/"/>
+    <url>/202312151076906245/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在本地环境部署服务后，登录界面验证码显示不出来，看后台日志是一个关于字体包的错误。</p><h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><p>报错如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs log">java.lang.NullPointerException<br>        at sun.awt.FontConfiguration.getVersion(FontConfiguration.java:1264)<br>        at sun.awt.FontConfiguration.readFontConfigFile(FontConfiguration.java:219)<br>        at sun.awt.FontConfiguration.init(FontConfiguration.java:107)<br>        at sun.awt.X11FontManager.createFontConfiguration(X11FontManager.java:776)<br></code></pre></td></tr></table></figure><h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>查到原因是CentOS系统缺少字体包。<br>执行 yum provides *&#x2F;dejavu 命令查找字体包，执行 yum -y install fontconfig 命令安装字体包。<br>还要执行命令安装查找到的对应的字体包。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install dejavu-sans-fonts-2.33-6.el7.noarch<br>yum -y install dejavu-sans-mono-fonts-2.33-6.el7.noarch<br>yum -y install dejavu-serif-fonts-2.33-6.el7.noarch<br></code></pre></td></tr></table></figure><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>没有字体包的原因是，安装CentOS系统时，选择了最小化安装，于是就没有字体包，但是项目的验证码需要字体包，就报错了。看错误日志是排查错误的好办法。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>报错排查</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>bug</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于netstat命令</title>
     <link href="/20231213285109806/"/>
     <url>/20231213285109806/</url>
