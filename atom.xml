@@ -6,7 +6,7 @@
   <link href="https://zzflybird.github.io/atom.xml" rel="self"/>
   
   <link href="https://zzflybird.github.io/"/>
-  <updated>2024-01-07T07:34:04.940Z</updated>
+  <updated>2024-01-07T07:55:32.576Z</updated>
   <id>https://zzflybird.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工作中如何更好地有效提问？</title>
+    <link href="https://zzflybird.github.io/202401073816330126/"/>
+    <id>https://zzflybird.github.io/202401073816330126/</id>
+    <published>2024-01-07T07:47:07.000Z</published>
+    <updated>2024-01-07T07:55:32.576Z</updated>
+    
+    <content type="html"><![CDATA[<p>kimi的总结：</p><p>这个视频讨论了如何在职场中有效地提问，以提高工作效率并树立专业形象。视频提出了三个关键步骤来确保提出的问题质量高，能为自己加分：</p><ol><li><p><strong>在提问之前做好功课</strong>：</p><ul><li>自己研究问题，直到无法独立解决。</li><li>思考为什么要问这个问题，以便在提问时能够清晰地表达自己的需求和目的。</li><li>预测对方可能的答案，并准备相应的后续问题。</li></ul></li><li><p><strong>换位思考</strong>：</p><ul><li>考虑对方的角度，想象他们可能如何回答你的问题。</li><li>根据对方可能的反应，调整自己的提问方式，使其更加有效。</li></ul></li><li><p><strong>推演对方可能的答案</strong>：</p><ul><li>根据对方可能给出的答案，提前准备不同的后续问题。</li><li>这样可以确保对话的流畅性，并且能够深入探讨问题。</li></ul></li></ol><p>视频强调，通过这三个步骤，可以确保提出的问题既清晰又具体，从而提高沟通效率，同时也能展现出提问者的专业素养。</p><hr><p>问问题的目的：解决双方的认知差距，所以问题越清楚、越具体，越有效。<br>什么样的问题是好问题？ -&gt; 简单清晰<br>1. 在提问之前做好功课：</p><p>1）自己研究这个问题直到研究不下去；问问题的时候可以问问有没有更好的找解决方法的问题</p><p>2）换位思考-&gt; 告诉对方为什么自己要问这个问题;</p><p>3）推演对方可能的答案，然后给出不同答案对应的后续问题;</p><hr><p>刚工作的时候经常会有很懵逼的情况，遇到很多问题都会觉得是新的问题，或者手足无措。后来经过一定的调整这种尴尬煎熬的局面少了很多，想起来主要是有这些进步：</p><p>1）减轻心理和情绪上的负担，有问题就整理好尽早问，解决问题比自己在别人心中是聪明还是笨重要多了；有问题拖着不问降低了工作效率才会更加给自己的形象减分。</p><p>2）看了一些咨询相关的书籍之后很有启发，一些问题基本用5W2H进行拆解之后就会发现其实没有那么让人摸不着头脑，并且拆解的过程中就已经想到了可能的解决方案，这样就能对应到课代表所要求的第三点，而且自己预想的解决方案和同事交流的时候也能碰撞出新的火花。</p><hr><p>参考：<a href="https://www.youtube.com/watch?v=X6plTdMasPA">https://www.youtube.com/watch?v=X6plTdMasPA</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;kimi的总结：&lt;/p&gt;
+&lt;p&gt;这个视频讨论了如何在职场中有效地提问，以提高工作效率并树立专业形象。视频提出了三个关键步骤来确保提出的问题质量高，能为自己加分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;在提问之前做好功课&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li</summary>
+      
+    
+    
+    
+    
+    <category term="工作" scheme="https://zzflybird.github.io/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>24年1月周报01-看电影、转正与刷论文网站</title>
@@ -481,31 +508,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode-122. 买卖股票的最佳时机 II</title>
-    <link href="https://zzflybird.github.io/202207313064434135/"/>
-    <id>https://zzflybird.github.io/202207313064434135/</id>
-    <published>2022-07-31T03:53:56.000Z</published>
-    <updated>2022-08-02T14:18:16.365Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>本题可买—》卖多次</strong></p><p><img src="https://raw.githubusercontent.com/zzflybird/my-images/master/hexo-blog-img/lc-122-2022-07-31_112441.png"></p><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; prices)</span> </span>&#123;<br><br>        <span class="hljs-comment">// 可交易多次，即卖出状态可继续买入</span><br>        <span class="hljs-type">int</span> n = prices.<span class="hljs-built_in">size</span>();<br><br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">dp</span>(n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">2</span>));<br><br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = -prices[<span class="hljs-number">0</span>];<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n ; i++)<br>        &#123;<br>            dp[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>-prices[i], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>]), dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>] - prices[i]);<br>            dp[i][<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>] + prices[i], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]);<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> dp[n<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;本题可买—》卖多次&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zzflybird/my-images/master/hexo-blog-img/lc-122-2022-07-31_</summary>
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://zzflybird.github.io/tags/leetcode/"/>
     
   </entry>
   

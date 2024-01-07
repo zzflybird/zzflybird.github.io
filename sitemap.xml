@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zzflybird.github.io/202401073816330126/</loc>
+    
+    <lastmod>2024-01-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zzflybird.github.io/202401074245945053/</loc>
     
     <lastmod>2024-01-07</lastmod>
@@ -954,6 +963,13 @@
   
   <url>
     <loc>https://zzflybird.github.io/tags/bug/</loc>
+    <lastmod>2024-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zzflybird.github.io/tags/%E5%B7%A5%E4%BD%9C/</loc>
     <lastmod>2024-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
