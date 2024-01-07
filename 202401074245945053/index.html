@@ -16,20 +16,24 @@
   <meta name="author" content="zzflybird">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言由于故障导致服务器显卡驱动掉了，尝试了各种方法都没有解决，记录下最终解决的方法。 报错执行命令 nvidia-smi，报错：NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIAdriver. Make sure that the latest NVIDIA driver is installed and ru">
+    <meta name="description" content="24年1月周报01-看电影、转正与刷论文网站1. 看电影 以下内容会有电影剧透。   元旦当天自己去看了大鹏的《年会不能停》电影，听说很不错。 突然看到大鹏差点没有认出来，还看到了很多熟悉的面孔，脱口秀演员，比如童漠男、大木和晃晃。童漠男我看到一眼觉得很熟悉，但是刚开始想不起来叫什么，后面才想起来。然后才认出来了大木和晃晃，他们这个脱口秀形式叫什么我也忘记了。 影片内容是关于一个错误的调职引起的一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu系统GPU掉显卡驱动问题记录">
-<meta property="og:url" content="https://zzflybird.github.io/202312232732646525/index.html">
+<meta property="og:title" content="24年1月周报01-看电影、转正与刷论文网站">
+<meta property="og:url" content="https://zzflybird.github.io/202401074245945053/index.html">
 <meta property="og:site_name" content="zzflybird">
-<meta property="og:description" content="前言由于故障导致服务器显卡驱动掉了，尝试了各种方法都没有解决，记录下最终解决的方法。 报错执行命令 nvidia-smi，报错：NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIAdriver. Make sure that the latest NVIDIA driver is installed and ru">
+<meta property="og:description" content="24年1月周报01-看电影、转正与刷论文网站1. 看电影 以下内容会有电影剧透。   元旦当天自己去看了大鹏的《年会不能停》电影，听说很不错。 突然看到大鹏差点没有认出来，还看到了很多熟悉的面孔，脱口秀演员，比如童漠男、大木和晃晃。童漠男我看到一眼觉得很熟悉，但是刚开始想不起来叫什么，后面才想起来。然后才认出来了大木和晃晃，他们这个脱口秀形式叫什么我也忘记了。 影片内容是关于一个错误的调职引起的一">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-23T10:06:12.000Z">
-<meta property="article:modified_time" content="2023-12-23T10:14:30.488Z">
+<meta property="og:image" content="https://zzflybird-file.oss-cn-beijing.aliyuncs.com/imgs/20240106202622.png">
+<meta property="og:image" content="https://zzflybird-file.oss-cn-beijing.aliyuncs.com/imgs/20240106202815.png">
+<meta property="article:published_time" content="2024-01-07T07:05:52.000Z">
+<meta property="article:modified_time" content="2024-01-07T07:34:04.940Z">
 <meta property="article:author" content="zzflybird">
+<meta property="article:tag" content="周报">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zzflybird-file.oss-cn-beijing.aliyuncs.com/imgs/20240106202622.png">
   
   
-  <title>Ubuntu系统GPU掉显卡驱动问题记录 - zzflybird</title>
+  <title>24年1月周报01-看电影、转正与刷论文网站 - zzflybird</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -180,7 +184,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Ubuntu系统GPU掉显卡驱动问题记录">
+            <span class="h2" id="subtitle" title="24年1月周报01-看电影、转正与刷论文网站">
               
             </span>
 
@@ -190,8 +194,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-12-23 18:06" pubdate>
-        2023年12月23日 晚上
+      <time datetime="2024-01-07 15:05" pubdate>
+        2024年1月7日 下午
       </time>
     </span>
   
@@ -201,7 +205,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      554 字
+      1.5k 字
     </span>
   
 
@@ -210,7 +214,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      13 分钟
     </span>
   
 
@@ -247,29 +251,69 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Ubuntu系统GPU掉显卡驱动问题记录</h1>
+            <h1 style="display: none">24年1月周报01-看电影、转正与刷论文网站</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月23日 晚上
+                  本文最后更新于：2024年1月7日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于故障导致服务器显卡驱动掉了，尝试了各种方法都没有解决，记录下最终解决的方法。</p>
-<h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><p>执行命令 nvidia-smi，报错：NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA<br>driver. Make sure that the latest NVIDIA driver is installed and running.</p>
-<h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>内核版本原因，内核版本的头文件不匹配。</p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>uname -r 查看内核版本<br>sudo apt-get install –reinstall linux-headers-generic<br>sudo apt-get install –reinstall linux-headers-$(uname -r)<br>sudo apt-get install –reinstall build-essential</p>
-<p>再次 modprobe nvidia</p>
-<p>安装 NVIDIA*.run</p>
-<p>执行nvidia-sm</p>
-<p>参考：<br><a target="_blank" rel="noopener" href="https://mcqueen-zero.blog.csdn.net/article/details/124203989?spm=1001.2014.3001.5502">https://mcqueen-zero.blog.csdn.net/article/details/124203989?spm=1001.2014.3001.5502</a><br><a target="_blank" rel="noopener" href="https://spacevision.blog.csdn.net/article/details/123510743">https://spacevision.blog.csdn.net/article/details/123510743</a></p>
+              <h1 id="24年1月周报01-看电影、转正与刷论文网站"><a href="#24年1月周报01-看电影、转正与刷论文网站" class="headerlink" title="24年1月周报01-看电影、转正与刷论文网站"></a>24年1月周报01-看电影、转正与刷论文网站</h1><h2 id="1-看电影"><a href="#1-看电影" class="headerlink" title="1. 看电影"></a>1. 看电影</h2><blockquote>
+<p>以下内容会有电影剧透。</p>
+</blockquote>
+<hr>
+<p>元旦当天自己去看了大鹏的《年会不能停》电影，听说很不错。</p>
+<p>突然看到大鹏差点没有认出来，还看到了很多熟悉的面孔，脱口秀演员，比如童漠男、大木和晃晃。童漠男我看到一眼觉得很熟悉，但是刚开始想不起来叫什么，后面才想起来。然后才认出来了大木和晃晃，他们这个脱口秀形式叫什么我也忘记了。</p>
+<p>影片内容是关于一个错误的调职引起的一系列问题，非常辛辣的讽刺了私企的裁员和加班行为，还对公司的中高层领导如何不做实事、什么事都让下属干，说话净是些废话，拱火下属转移矛盾玩得贼溜。</p>
+<p>非常的好看，好笑，看的很爽。</p>
+<p>不过看完的第二天就是工作日，该上班上班，电影和生活是两个平行世界，我们能看到那个世界发生的事情，仅此而已。</p>
+<p>不能靠看这个动作给生活带来什么变化，只有做才能给生活带来变化，好的或坏的。</p>
+<h2 id="2-转正"><a href="#2-转正" class="headerlink" title="2. 转正"></a>2. 转正</h2><p>元旦后的第一天就是工作日，是和我一起入职的同时的转正答辩的日子，本以为他能如期转正，但是在第二天就被谈话说未能转正，可以收拾东西走了。这一刻我再一次深深地感受到现实的不可改变。</p>
+<p>同事离职之后，旁边的桌子变得空空荡荡的。</p>
+<p>在白天，我作为打工人是理性大于感性的，如果感性上来了，会判断是否要压下去。就这件事的个人情感而言，是比较down的，但是公司掏工资，买走了我白天的工作时间，所以白天短暂的处理下这条消息后，唏嘘一下，继续工作。</p>
+<p>只有晚上下班后，才有时间去和朋友畅谈近况。</p>
+<h2 id="3-自媒体的核心——利它"><a href="#3-自媒体的核心——利它" class="headerlink" title="3. 自媒体的核心——利它"></a>3. 自媒体的核心——利它</h2><p>最近在看B站和小红书的一些博主，或者一些博客，发现了知识分享的核心是利它。</p>
+<p>粗糙的分可以分为知识分享类博主，带来你需要的知识；其次就是能够带来情绪价值的博主，比如下饭必看的电子榨菜，或者一些比较有意思的博主，图个乐。</p>
+<p>你的文字或视频能给别人带来什么别人没有的，或者你的比别人更全的内容。这个其实就是创新，人无我有。之前看055的视频，他提到他在做数码产品的评测，会去看已经发布该产品评测视频的评论区，收集下评论区中的问题，针对问题来测评，这就是抓住用户的痛点。因为关注电子产品的用户大多数会看多个数码博主的评测视频。</p>
+<p>写博客和文章也是如此，有创新，不一样的内容和角度，或者更全面的内容和角度，才能吸引读者观看和订阅。</p>
+<h2 id="4-papers-cool刷论文网站"><a href="#4-papers-cool刷论文网站" class="headerlink" title="4. papers.cool刷论文网站"></a>4. papers.cool刷论文网站</h2><p>分享一个刷Arxiv预印本每日论文的网站<a target="_blank" rel="noopener" href="https://papers.cool/">https://papers.cool</a>，可以一键得到论文的核心内容，方便论文阅读者了解正在发表的论文方向。</p>
+<p>举个例子（只放了一部分截图）：</p>
+<p><img src="https://zzflybird-file.oss-cn-beijing.aliyuncs.com/imgs/20240106202622.png" srcset="/img/loading.gif" lazyload></p>
+<p>不过这个网站只能刷Arxiv每日的论文，如果想要得到本地的pdf的论文，可以使用<a target="_blank" rel="noopener" href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn</a>这个AI问答网站。</p>
+<p>界面是这样的，支持输入网址和文件进行分析和问答：</p>
+<p><img src="https://zzflybird-file.oss-cn-beijing.aliyuncs.com/imgs/20240106202815.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-繁花"><a href="#5-繁花" class="headerlink" title="5. 繁花"></a>5. 繁花</h2><p>周末在家看了胡歌的新剧《繁花》，看了几集普通话版本的，又看了沪语版本的。普通话版本很怪，口型对不上。</p>
+<p>大上海92年都那么繁华啊，当时我还没出生呢。</p>
+<p>剧里光影感很有电影感，很有感觉。</p>
+<p>看每个人的故事，众生相。</p>
+<p>很多倒叙的手法，先来一个巨大的结果转折，再返回去几小时前介绍前因后果，达到观众的爽点。</p>
+<p>至真园，假至真时真亦假。阿宝最初的发家是靠一个贵人，一身行头，一个革命战友汪小姐，互相成就。</p>
+<p>很有意思的是，在黄河路上卖消息的卖烟贩子，依靠消息的灵通和各个饭店老板还有宝总都能聊上两句，赚个小钱。（信息差赚钱老法师了）</p>
+<p>对了，还学到了一个上海方言，老法师，指那些在自己的行业里技艺精湛的老年人，算是尊称。</p>
+<p>家有一老，如有一宝。看那些升级流小说和动漫中，大多数主角的金手指是一个老爷爷，在主角人生成长的道路上，陪伴左右，出谋划策。</p>
+<p>不过一般人没有老爷爷，就只能看书了，从书籍上获取知识，不过书上的知识会失去很多细节。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/24%E5%B9%B41%E6%9C%88%E5%91%A8%E6%8A%A5/">24年1月周报</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%91%A8%E6%8A%A5/">周报</a>
+                    
+                  </div>
                 
               </div>
               
@@ -284,18 +328,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202401074245945053/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">24年1月周报01-看电影、转正与刷论文网站</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/202312151076906245/">
-                        <span class="hidden-mobile">记录一次部署服务报错排查</span>
+                      <a href="/202312232732646525/">
+                        <span class="hidden-mobile">Ubuntu系统GPU掉显卡驱动问题记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
