@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405.31526683486004 119.99513789638331" width="810.6305336697201" height="239.99027579276662">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    <style class="style-fonts">
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/Virgil.woff2");
+      }
+      @font-face {
+        font-family: "Cascadia";
+        src: url("https://excalidraw.com/Cascadia.woff2");
+      }
+      @font-face {
+        font-family: "Assistant";
+        src: url("https://excalidraw.com/Assistant-Regular.woff2");
+      }
+    </style>
+    
+  </defs>
+  <rect x="0" y="0" width="405.31526683486004" height="119.99513789638331" fill="#ffffff"></rect><g stroke-opacity="0.9" fill-opacity="0.9" transform="translate(73.38530467665692 10) rotate(0 160.96498107910156 49.997568948191656)"><text x="160.96498107910156" y="70.54126896231745" font-family="Virgil, Segoe UI Emoji" font-size="78.75366025151308px" fill="#37abc8" text-anchor="middle" style="white-space: pre;" direction="ltr" dominant-baseline="alphabetic">zzflybird</text></g><g stroke-linecap="round"><g stroke-opacity="0.9" fill-opacity="0.9" transform="translate(11.424230689182878 64.8895141989642) rotate(0 20.916255870360146 0.2451123734808789)"><path d="M-1.42 -1.04 C18.23 1.99, 34.92 2.28, 39.89 -1.19 M0.03 0.2 C11.33 0.32, 23.31 0.43, 41.1 1.01" stroke="#37abc8" stroke-width="4" fill="none"></path></g></g><mask></mask><g stroke-linecap="round"><g stroke-opacity="0.9" fill-opacity="0.9" transform="translate(28.99369695859241 52.59157627903551) rotate(179.2300988186005 13.287320346043998 -0.37125371400179574)"><path d="M1.59 1.59 C8.27 1.63, 11.32 -1.92, 26.13 -2.69 M-0.29 0.19 C8.09 -0.11, 15.3 0.02, 26.7 0.06" stroke="#37abc8" stroke-width="4" fill="none"></path></g></g><mask></mask><g stroke-linecap="round"><g stroke-opacity="0.9" fill-opacity="0.9" transform="translate(35.38774779528649 79.00477723027961) rotate(355.12005594595666 7.790639574398483 0)"><path d="M1.28 1.31 C2.35 -1.44, 7.38 -1.64, 15.61 0.05 M0.06 0.13 C4.41 0.38, 10.07 0.59, 15.41 -0.35" stroke="#37abc8" stroke-width="4" fill="none"></path></g></g><mask></mask></svg>
